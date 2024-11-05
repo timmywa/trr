@@ -50,11 +50,8 @@
 		background: #6b6b6b;
 		font-family: Arial, sans-serif;
 		width: 100%;
-		max-width: 600px;
-  		clear: both;
   		padding: 0;
   		margin: 0 auto;
-		text-align: left;
 	}
 	h1, h2 {
 		font-family: 'Rajdhani', sans-serif;
@@ -72,11 +69,20 @@
   		 width: 50%;
 		 text-align: center;
 	}
+	.container {
+		  background: #ffffff;
+  		  width: 100%;
+	          max-width: 660px;
+  		  clear: both;
+  	          padding: 0;
+  	          margin: 0 auto;
+  		  text-align: left;
+	}
 	</style>
 </head>
 
 <body>
-  <h1 class="center">Totally RAD Radio!</h1>
+  <main class="container"><h1 class="center">Totally RAD Radio!</h1>
   <a href="https://totallyradradio.com">
     <img src="images/trr-logo.webp" alt="Totally RAD Radio Logo in blue color scheme" title="Totally RAD Radio" width="300" height="300" class="center">
   </a>
@@ -156,12 +162,15 @@
   
   <p>NOTE: Clicking the PLAY! links above will open a new page and begin playing.</p>
   <p>If you need help or something isn't working right, please <a href="mailto:help@totallyradradio.com">email us</a>.</p>
+  </main>
+	<footer class="container">
   <p class="small-text">Copyright &copy; 2024 SuiteSounds Entertainment, LLC. All rights reserved.</p>
   
   <!-- Facebook Like Button -->
   <div class="fb-like" data-href="https://totallyradradio.com" data-width="30" data-layout="box_count" data-action="like" data-size="small" data-share="true"></div>
 
   <div id="fb-root"></div>
+	</footer>
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v21.0&appId=1543598645802173"></script>
 </body>
 
