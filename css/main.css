@@ -28,12 +28,12 @@ h2 {
 	text-align: center;
 }
 .container {
-	background: #ffffff;
+	background: #fff;
 	width: 100%;
 	max-width: 600px;
 	clear: both;
 	padding: 0;
-	margin: 0 auto;
+	margin: .5em auto;
 	text-align: left;
 }
 .header {
@@ -43,9 +43,6 @@ h2 {
 	width: 50%;
 	max-width: 600px;
 	text-align: center;
-}
-.listen {
-	margin-left: 1em;
 }
 .footer {
 	width: 100%;
