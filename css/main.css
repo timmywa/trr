@@ -1,40 +1,46 @@
-	body {
-		background: #6b6b6b;
-		font-family: Arial, sans-serif;
-		width: 100%;
-  		padding: 0;
-  		margin:  auto;
-	}
-	h1, h2 {
-		font-family: 'Rajdhani', sans-serif;
-	}
-	h2.alt, p {
-		font-family: Arial, sans-serif;
-	}
-	.small-text {
-		font-size: 0.8em;
-	}
-	.center {
-		 display: block;
- 		 margin-left: auto;
-  		 margin-right: auto;
-  		 width: 50%;
-		 text-align: center;
-	}
-	.container {
-		  background: #ffffff;
-  		  width: 100%;
-	          max-width: 660px;
-  		  clear: both;
-  	          padding: 0;
-  	          margin: 0 auto;
-  		  text-align: left;
-	}
-	.footer {
-		  width: 100%;
-	          max-width: 660px;
-  		  clear: both;
-  	          padding: 0;
-  	          margin: 0 auto;
-  		  text-align: center;
-	}
+body {
+	background: #6b6b6b;
+	font-family: Arial, sans-serif;
+	width: 100%;
+	padding: 0;
+	margin:  auto;
+}
+h1, h2 {
+	font-family: 'Rajdhani', sans-serif;
+}
+.alt, p {
+	font-family: Arial, sans-serif;
+}
+.small-text {
+	font-size: 0.8em;
+}
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	text-align: center;
+}
+.container {
+	background: #ffffff;
+	width: 100%;
+	max-width: 660px;
+	clear: both;
+	padding: 0;
+	margin: 0 auto;
+	text-align: left;
+}
+.header {
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	text-align: center;
+}
+.footer {
+	width: 100%;
+	max-width: 660px;
+	clear: both;
+	padding: 0;
+	margin: 0 auto;
+	text-align: center;
+}
