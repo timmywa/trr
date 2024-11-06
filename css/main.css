@@ -30,10 +30,10 @@ h2 {
 .container {
 	background: #ffffff;
 	width: 100%;
-	max-width: 660px;
+	max-width: 600px;
 	clear: both;
 	padding: 0;
-	margin: 0 auto;
+	margin: 5 auto;
 	text-align: left;
 }
 .header {
@@ -41,6 +41,7 @@ h2 {
 	margin-left: auto;
 	margin-right: auto;
 	width: 50%;
+	max-width: 600px;
 	text-align: center;
 }
 .footer {
