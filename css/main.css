@@ -1,12 +1,18 @@
 body {
 	background: #6b6b6b;
 	font-family: Arial, sans-serif;
+	font-size: 87.5%;
 	width: 100%;
 	padding: 0;
 	margin:  auto;
 }
-h1, h2 {
+h1 {
 	font-family: 'Rajdhani', sans-serif;
+	font-size: 2em;
+}
+h2 {
+	font-family: 'Rajdhani', sans-serif;
+	font-size: 1.5em;
 }
 .alt, p {
 	font-family: Arial, sans-serif;
