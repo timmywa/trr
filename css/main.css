@@ -24,6 +24,10 @@ p {
 .small-text {
 	font-size: 0.8em;
 }
+.bottom {
+	position: absolute;
+	bottom: 0;
+}
 .center {
 	margin: 0 auto;
 	width: 50%;
