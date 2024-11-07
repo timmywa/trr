@@ -21,7 +21,6 @@ h2 {
 	font-size: 0.8em;
 }
 .center {
-	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	width: 50%;
@@ -37,7 +36,6 @@ h2 {
 	text-align: left;
 }
 .header {
-	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	width: 50%;
@@ -46,9 +44,13 @@ h2 {
 }
 .footer {
 	width: 100%;
-	max-width: 660px;
+	max-width: 600px;
 	clear: both;
 	padding: 0;
 	margin: 0 auto;
 	text-align: center;
+}
+header, main, section, footer,
+aside, nav, article, figure {
+  display: block;
 }
