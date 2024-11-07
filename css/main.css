@@ -25,7 +25,6 @@ h2 {
 	margin-right: auto;
 	width: 50%;
 	text-align: center;
-	display: inline-block;
 }
 .container {
 	background: #fff;
@@ -37,10 +36,9 @@ h2 {
 	text-align: left;
 }
 .header {
-	margin-left: auto;
-	margin-right: auto;
-	width: 50%;
+	margin: 0 auto;
 	text-align: center;
+	display: block;
 }
 .footer {
 	width: 100%;
