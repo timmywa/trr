@@ -34,14 +34,13 @@ p {
 	width: 100%;
 	max-width: 600px;
 	clear: both;
-	padding: 0 .25em;
+	padding: .25em;
 	margin: 0 auto;
 	text-align: left;
 }
 .header {
 	margin: 0 auto;
 	text-align: center;
-	display: block;
 }
 .footer {
 	width: 100%;
