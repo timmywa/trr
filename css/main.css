@@ -25,6 +25,7 @@ h2 {
 	margin-right: auto;
 	width: 50%;
 	text-align: center;
+	display: inline-block;
 }
 .container {
 	background: #fff;
