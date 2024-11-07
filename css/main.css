@@ -14,8 +14,11 @@ h2 {
 	font-family: 'Rajdhani', sans-serif;
 	font-size: 2em;
 }
-.alt, p {
+h3 {
 	font-size: 1.5em;
+}
+p {
+	font-size: 1em;
 }
 .small-text {
 	font-size: 0.8em;
