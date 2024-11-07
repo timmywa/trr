@@ -24,10 +24,6 @@ p {
 .small-text {
 	font-size: 0.8em;
 }
-.down {
-	position: absolute;
-	bottom: 0;
-}
 .center {
 	margin: 0 auto;
 	width: 50%;
