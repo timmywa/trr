@@ -49,6 +49,7 @@ p {
 	padding: 0;
 	margin: 0 auto;
 	text-align: center;
+	-webkit-text-stroke: 1px white;
 }
 .social {
 	width: 100%;
