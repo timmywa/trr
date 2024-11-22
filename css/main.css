@@ -59,7 +59,7 @@ p {
 	margin: 0px auto 20px;
 	text-align: center;
 }
-ul{
+ul.2columns{
     list-style-type: disc;
     -webkit-columns: 2;
     -moz-columns: 2;
