@@ -65,7 +65,7 @@ ul.twocolumns{
     -moz-columns: 2;
     columns: 2;
     list-style-position: inside;
-    line-height: 1em;
+    line-height: 2em;
 }
 header, main, section, footer,
 aside, nav, article, figure {
