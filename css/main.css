@@ -59,6 +59,9 @@ p {
 	margin: 0px auto 20px;
 	text-align: center;
 }
+img.social {
+	margin: 20px;
+}
 ul.twocolumns{
     list-style-type: disc;
     -webkit-columns: 2;
