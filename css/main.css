@@ -60,6 +60,8 @@ p {
 	text-align: center;
 }
 img.social {
+	width: 32;
+	height: 32;
 	margin: 20px;
 }
 ul.twocolumns{
