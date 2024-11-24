@@ -62,7 +62,7 @@ p {
 img.social {
 	width: 32px;
 	height: 32px;
-	margin: 20px;
+	margin: 0px 20px;
 }
 ul.twocolumns{
     list-style-type: disc;
