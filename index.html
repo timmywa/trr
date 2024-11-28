@@ -158,7 +158,7 @@
   </main>
 	
 	<footer class="footer">
-	<p class="small-text">Copyright &copy; 2024 SuiteSounds Entertainment, LLC. All rights reserved.</p>
+	<p class="small-text">Copyright &copy; <span id="year"></span> SuiteSounds Entertainment, LLC. All rights reserved.</p>
 	<!-- Facebook Like Button -->
 	<div class="fb-like" data-href="https://totallyradradio.com" data-width="30" data-layout="box_count" data-action="like" data-size="small" data-share="true"></div>
 	<div id="fb-root"></div>
@@ -170,6 +170,7 @@
 	</form>
 	</footer>
   	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v21.0&appId=1543598645802173"></script>
+	<script>const currentYear = new Date().getFullYear();document.getElementById("year").textContent = currentYear;</script>
 </body>
 
 </html>
