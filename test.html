@@ -3,7 +3,7 @@
   <body>
   <script>
   function fetchNowPlaying() {
-    const metadataUrl = "http://ingest-us-west-01.audiocdn.com:8000/phcys9pyfy7/128k.aac/status-json.xsl";
+    const metadataUrl = "https://ais-sa2.cdnstream1.com/1977_128.aac/status-json.xsl";
 
     fetch(metadataUrl)
       .then(response => response.json())
