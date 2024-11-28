@@ -1,28 +1,43 @@
-<html>
-<head><title>test</title></head>
-  <body>
-  <script>
-  function fetchNowPlaying() {
-    const metadataUrl = "https://ais-sa2.cdnstream1.com/1977_128.aac";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Now Playing</title>
+</head>
+<body>
+    <h1>Now Playing:</h1>
+    <p id="current-song">Loading...</p>
 
-    fetch(metadataUrl)
-      .then(response => response.json())
-      .then(data => {
-        const currentTrack = data.source.title;
-        document.getElementById("now-playing").textContent = currentTrack;
-      })
-      .catch(error => {
-        console.error("Error fetching metadata:", error);
-        document.getElementById("now-playing").textContent = "Error fetching track information";
-      });
-  }
+    <script>
+        const icecastURL = "https://ais-sa2.cdstream1.com/1977_128.aac/status-json.xsl"; // Replace with your Icecast server URL
 
-  // Call the function to fetch the initial data and then set up an interval to refresh it periodically
-  fetchNowPlaying();
-  setInterval(fetchNowPlaying, 10000); // Refresh every 10 seconds
+        async function fetchCurrentSong() {
+            try {
+                const response = await fetch(icecastURL);
+                const data = await response.json();
 
-</script>
+                // Navigate to the source information in the JSON
+                const source = data.icestats.source;
+                let currentSong;
 
-<div id="now-playing"></div>
-  </body>
+                // Handle single or multiple streams
+                if (Array.isArray(source)) {
+                    currentSong = source[0].title; // Modify to match your mount point if necessary
+                } else {
+                    currentSong = source.title;
+                }
+
+                document.getElementById("current-song").textContent = currentSong || "No song is currently playing.";
+            } catch (error) {
+                console.error("Error fetching Icecast data:", error);
+                document.getElementById("current-song").textContent = "Unable to fetch song information.";
+            }
+        }
+
+        // Update song information every 10 seconds
+        setInterval(fetchCurrentSong, 10000);
+        fetchCurrentSong(); // Initial fetch
+    </script>
+</body>
 </html>
