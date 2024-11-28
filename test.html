@@ -1,0 +1,28 @@
+<html>
+<head><title>test</title></head>
+  <body>
+  <script>
+  function fetchNowPlaying() {
+    const metadataUrl = "http://ingest-us-west-01.audiocdn.com:8000/phcys9pyfy7/128k.aac/status-json.xsl";
+
+    fetch(metadataUrl)
+      .then(response => response.json())
+      .then(data => {
+        const currentTrack = data.source.title;
+        document.getElementById("now-playing").textContent = currentTrack;
+      })
+      .catch(error => {
+        console.error("Error fetching metadata:", error);
+        document.getElementById("now-playing").textContent = "Error fetching track information";
+      });
+  }
+
+  // Call the function to fetch the initial data and then set up an interval to refresh it periodically
+  fetchNowPlaying();
+  setInterval(fetchNowPlaying, 10000); // Refresh every 10 seconds
+
+</script>
+
+<div id="now-playing"></div>
+  </body>
+</html>
