@@ -64,6 +64,10 @@ img.social {
 	height: 32px;
 	margin: 0px 20px;
 }
+img.headerimg {
+	max-width: 100%;
+	height: auto;
+}
 ul.twocolumns{
     list-style-type: disc;
     -webkit-columns: 2;
