@@ -40,13 +40,13 @@ p {
 }
 .header {
 	width: 100%;
-	/* max-width: 400px; /*
+	/* max-width: 400px; */
 	margin: 0 auto;
 	text-align: center;
 }
 .footer {
 	width: 100%;
-	/* max-width: 400px; /*
+	/* max-width: 400px; */
 	clear: both;
 	padding: 0;
 	margin: 0 auto;
@@ -55,7 +55,7 @@ p {
 }
 .social {
 	width: 100%;
-	/* max-width: 400px; /*
+	/* max-width: 400px; */
 	clear: both;
 	padding: 0;
 	margin: 0px auto 20px;
