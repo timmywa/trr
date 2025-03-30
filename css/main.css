@@ -1,99 +1,142 @@
+/* Base Body Styles */
 body {
-	background: #6b6b6b;
-	font-family: Arial, sans-serif;
-	font-size: .875em;
-	width: 100%;
-	padding: 0;
-	margin: 0;
-}
-h1 {
-	font-family: 'Rajdhani', sans-serif;
-	font-size: 3em;
-	margin: 0;
-}
-h2 {
-	font-family: 'Rajdhani', sans-serif;
-	font-size: 2em;
-}
-h3 {
-	font-size: 1.5em;
-}
-p {
-	font-size: 1em;
-}
-.small-text {
-	font-size: 0.8em;
-}
-.center {
-	margin: 0 auto;
-	width: 50%;
-	text-align: center;
-}
-.container {
-	background: #fff;
-	width: 100%;
-	max-width: 600px;
-	clear: both;
-	padding: .25em;
-	margin: 0 auto;
-	text-align: left;
-}
-.header {
-	width: 100%;
-	max-width: 600px;
-	margin: 0 auto;
-	text-align: center;
-}
-.footer {
-	width: 100%;
-	max-width: 600px;
-	clear: both;
-	padding: 0;
-	margin: 0 auto;
-	text-align: center;
-	color: #fff;
-}
-.social {
-	width: 100%;
-	max-width: 600px;
-	clear: both;
-	padding: 0;
-	margin: 0px auto 20px;
-	text-align: center;
-}
-img.social {
-	width: 32px;
-	height: 32px;
-	margin: 0px 20px;
-}
-img.headerimg {
-	max-width: 99% !important;
-	height: auto !important;
-}
-ul.twocolumns{
-    list-style-type: disc;
-    -webkit-columns: 2;
-    -moz-columns: 2;
-    columns: 2;
-    list-style-position: inside;
-    line-height: 1.75em;
-}
-.social-links {
-  list-style-type: none; /* Removes the default bullet points */
-  padding-left: 0;     /* Removes the default left padding browsers add to lists */
-  margin: 0;           /* Optional: Resets default margins if needed */
-  display: flex;       /* Arranges list items (the <li> elements) in a row */
-  flex-wrap: wrap;     /* Allows icons to wrap to the next line on small screens if needed */
-  gap: 15px;           /* Adds space between the icons (adjust 15px as desired) */
-  justify-content: center; /* Optional: Centers the icons within the section */
-  align-items: center; /* Optional: Vertically aligns icons if they have different heights */
+  background: #6b6b6b;
+  font-family: Arial, sans-serif; /* Consider adding more fallback fonts */
+  font-size: 100%; /* Base font size (usually 16px) */
+  line-height: 1.5; /* Added baseline line-height for readability */
+  padding: 0;
+  margin: 0;
+  color: #333; /* Added default text color (adjust as needed) */
 }
 
-/* Optional: If you need to adjust margins specifically on the list items */
+/* Typography - Using REM units relative to root font size */
+h1, h2 {
+  font-family: 'Rajdhani', sans-serif;
+  margin-top: 0; /* Common practice to remove top margin on headings */
+  line-height: 1.2; /* Adjust heading line-height */
+}
+
+h1 {
+  font-size: 2.5rem;  /* Approx 40px if base is 16px */
+  margin-bottom: 0.5em; /* Example bottom margin */
+}
+
+h2 {
+  font-size: 1.75rem; /* Approx 28px */
+  margin-bottom: 0.5em;
+}
+
+h3 {
+  font-size: 1.3rem;  /* Approx 21px */
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+p {
+  font-size: 0.875rem; /* Approx 14px */
+  margin-top: 0;
+  margin-bottom: 1em; /* Default paragraph spacing */
+}
+
+.small-text {
+  font-size: 0.7rem; /* Approx 11px */
+}
+
+/* Layout Containers & Sections */
+.container,
+.header,
+.footer,
+.social {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;  /* Added horizontal padding for smaller screens */
+  padding-right: 15px; /* Added horizontal padding for smaller screens */
+}
+
+.container {
+  background: #fff;
+  padding-top: 1em; /* Example vertical padding */
+  padding-bottom: 1em;
+  text-align: left; /* Default for container content */
+  /* overflow: hidden; */ /* Uncomment if needed to contain floats (unlikely needed now) */
+}
+
+.header {
+  text-align: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.footer {
+  text-align: center;
+  color: #fff;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.social {
+  text-align: center;
+  margin-bottom: 20px; /* Keep specific bottom margin */
+}
+
+/* Utility Classes */
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  /* Removed restrictive width: 50% */
+}
+
+/* Images */
+.header img { /* More specific if logo is always in header */
+  max-width: 100%; /* Standard responsive image */
+  height: auto;    /* Standard responsive image */
+  display: block;  /* Removes extra space below image */
+  margin-left: auto; /* Center if needed */
+  margin-right: auto;/* Center if needed */
+}
+
+/* Specific Component Styles */
+.twocolumns {
+  /* Removed -webkit- and -moz- prefixes */
+  columns: 2;
+  list-style-type: disc;
+  list-style-position: inside;
+  line-height: 1.75em; /* Keep specific line-height */
+  padding-left: 0; /* Ensure no extra padding */
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+.social-links {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; /* Controls spacing between icons */
+  justify-content: center;
+  align-items: center;
+}
+
 .social-links li {
-  margin: 0; /* Resets any default margin on list items */
+  margin: 0; /* Ensure list items themselves have no margin */
 }
-header, main, section, footer,
-aside, nav, article, figure {
-  display: block;
+
+.social-links img { /* Styles for images within the social links */
+  width: 32px;  /* Keep specific icon size */
+  height: 32px; /* Keep specific icon size */
+  display: block; /* Good practice for images in flex items */
+  /* Removed margin: 0 20px; - Use gap on .social-links instead */
 }
+
+/*
+  Removed redundant HTML5 element block:
+  header, main, section, footer,
+  aside, nav, article, figure {
+    display: block;
+  }
+  Modern browsers handle this automatically.
+*/
