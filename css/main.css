@@ -78,6 +78,21 @@ ul.twocolumns{
     list-style-position: inside;
     line-height: 1.75em;
 }
+.social-links {
+  list-style-type: none; /* Removes the default bullet points */
+  padding-left: 0;     /* Removes the default left padding browsers add to lists */
+  margin: 0;           /* Optional: Resets default margins if needed */
+  display: flex;       /* Arranges list items (the <li> elements) in a row */
+  flex-wrap: wrap;     /* Allows icons to wrap to the next line on small screens if needed */
+  gap: 15px;           /* Adds space between the icons (adjust 15px as desired) */
+  justify-content: center; /* Optional: Centers the icons within the section */
+  align-items: center; /* Optional: Vertically aligns icons if they have different heights */
+}
+
+/* Optional: If you need to adjust margins specifically on the list items */
+.social-links li {
+  margin: 0; /* Resets any default margin on list items */
+}
 header, main, section, footer,
 aside, nav, article, figure {
   display: block;
