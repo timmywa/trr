@@ -143,7 +143,15 @@
         }
         
         .social-links a:hover img {
-            filter: brightness(0) saturate(100%) invert(1) contrast(100%);
+            filter: brightness(0) invert(1);
+        }
+        
+        /* Alternative: if some icons are already white, this ensures they all become white */
+        .social-links a:hover img[src*="ig-wb"],
+        .social-links a:hover img[src*="th-wb"],
+        .social-links a:hover img[src*="x-wb"],
+        .social-links a:hover img[src*="bluesky-wb"] {
+            filter: none;
         }
         
         address {
