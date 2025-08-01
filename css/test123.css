@@ -240,18 +240,18 @@
             margin: 20px 0 !important;
         }
         
-        @media (max-width: 600px) {
+@media (max-width: 600px) {
             .social-links {
-                gap: 10px;
+                gap: 6px;
             }
             
             .social-links a {
-                padding: 8px;
+                padding: 6px;
             }
             
             .social-links img {
-                width: 28px;
-                height: 28px;
+                width: 24px;
+                height: 24px;
             }
             
             .twocolumns {
