@@ -1,4 +1,4 @@
-
+    <style>
         body {
             font-family: 'Rajdhani', Arial, sans-serif;
             max-width: 800px;
@@ -23,7 +23,7 @@
         
         .header h1 {
             color: #2f63a0;
-            font-size: 3.0rem;
+            font-size: 3em;
             margin: 0 0 20px 0;
             font-weight: 700;
         }
@@ -38,7 +38,7 @@
         
         .header h2 {
             color: #555;
-            font-size: 2.0rem;
+            font-size: 2em;
             margin: 0;
             font-weight: 600;
         }
@@ -242,11 +242,26 @@
         
         @media (max-width: 600px) {
             .social-links {
-                gap: 15px;
+                gap: 10px;
+            }
+            
+            .social-links a {
+                padding: 8px;
+            }
+            
+            .social-links img {
+                width: 28px;
+                height: 28px;
             }
             
             .twocolumns {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+            
+            .twocolumns a {
+                padding: 10px 8px;
+                font-size: 0.9em;
             }
             
             .header h1 {
@@ -256,6 +271,14 @@
             .header h1 img {
                 max-width: 250px;
             }
+            
+            .stream-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .stream-links a {
+                padding: 12px 15px;
+            }
         }
-
-
+    </style>
