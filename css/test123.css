@@ -73,6 +73,8 @@
             font-size: 1.1em;
             transition: all 0.3s ease;
             box-shadow: 0 2px 4px rgba(47,99,160,0.3);
+            text-align: center;
+            line-height: 1.3;
         }
         
         .stream-links a:hover {
@@ -280,6 +282,8 @@
             .stream-links a {
                 padding: 12px 15px;
                 text-align: center;
+                font-size: 1em;
+                line-height: 1.4;
             }
         }
 
