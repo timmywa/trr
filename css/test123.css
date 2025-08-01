@@ -1,3 +1,4 @@
+
         body {
             font-family: 'Rajdhani', Arial, sans-serif;
             max-width: 800px;
@@ -53,6 +54,43 @@
             font-weight: 700;
         }
         
+        .stream-links {
+            margin: 20px 0;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .stream-links a {
+            display: inline-block;
+            background: #2f63a0;
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(47,99,160,0.3);
+        }
+        
+        .stream-links a:hover {
+            background: #1e3f73;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(47,99,160,0.4);
+        }
+        
+        .directory-section {
+            margin-top: 30px;
+        }
+        
+        .directory-section h3 {
+            color: #666;
+            font-size: 1em;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
         .twocolumns {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -219,3 +257,5 @@
                 max-width: 250px;
             }
         }
+
+
