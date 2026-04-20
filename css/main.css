@@ -185,36 +185,42 @@ body {
     margin: 20px 0 0; /* Only top margin */
 }
 
+/* --- Social Links Highlight Style --- */
 .social-links {
     display: flex;
     justify-content: center;
     gap: 15px;
     list-style: none;
     padding: 0;
-    margin: 15px 0 0; /* Reduced margin */
+    margin: 15px 0 0;
 }
 
 .social-links a {
     display: block;
     padding: 8px;
-    background: #f8f9fa;
+    background: #f8f9fa; /* Light grey background */
     border-radius: 50%;
     transition: all 0.3s ease;
+    border: 1px solid #ddd; /* Subtle border */
 }
 
 .social-links a:hover {
-    background: var(--primary-color);
+    background: #e8f0fe; /* Light blue highlight background */
+    border-color: var(--primary-color);
     transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(47, 99, 160, 0.2); /* Soft blue glow */
 }
 
 .social-links img {
     width: 32px;
     height: 32px;
     display: block;
+    /* Removed the brightness/invert filters so icons keep their original colors */
 }
 
+/* Optional: If you want the icons to pop a bit more on hover without turning white */
 .social-links a:hover img {
-    filter: brightness(0) invert(1);
+    filter: saturate(1.5); /* Makes the icon colors slightly more vibrant */
 }
 
 address {
