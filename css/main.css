@@ -93,15 +93,54 @@ body {
     box-shadow: var(--shadow-primary-hover);
 }
 
-.directory-section {
-    margin-top: 30px;
+/* --- Expandable Listing Section --- */
+.expandable-wrapper {
+    max-height: 280px; /* Shows about 4-6 links */
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.5s ease-in-out;
 }
 
-.directory-section h3 {
-    color: #666;
-    font-size: 1em;
-    margin-bottom: 15px;
-    font-weight: 500;
+.expandable-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(transparent, var(--container-bg));
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.expandable-wrapper.expanded {
+    max-height: 2000px;
+}
+
+.expandable-wrapper.expanded::after {
+    opacity: 0;
+}
+
+.show-more-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 25px;
+    background: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.show-more-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary);
 }
 
 .twocolumns {
@@ -111,10 +150,6 @@ body {
     list-style: none;
     padding: 0;
     margin: 20px 0;
-}
-
-.twocolumns li, .social-links li {
-    margin: 0;
 }
 
 .twocolumns a {
@@ -145,17 +180,7 @@ body {
     font-size: 0.9em;
 }
 
-.social {
-    margin: 30px 0;
-}
-
-.social h2 {
-    color: var(--primary-color);
-    border-bottom: 2px solid var(--primary-color);
-    padding-bottom: 10px;
-    font-weight: 700;
-}
-
+/* --- Social and Address --- */
 .social-links {
     display: flex;
     justify-content: center;
@@ -193,14 +218,6 @@ body {
     filter: brightness(0) invert(1);
 }
 
-/* Alternative: if some icons are already white, this ensures they all become white */
-.social-links a:hover img[src*="ig-wb"],
-.social-links a:hover img[src*="th-wb"],
-.social-links a:hover img[src*="x-wb"],
-.social-links a:hover img[src*="bluesky-wb"] {
-    filter: none;
-}
-
 address {
     text-align: center;
     margin: 30px 0;
@@ -216,10 +233,6 @@ address a {
     font-weight: 500;
 }
 
-address a:hover {
-    text-decoration: underline;
-}
-
 .footer {
     text-align: center;
     margin-top: 40px;
@@ -231,65 +244,11 @@ address a:hover {
     background: none;
     border: none;
     padding: 10px 0;
-    margin: 10px 0;
-}
-
-.spl-image {
-    margin: 10px 0;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
-
-.spl-image:hover {
-    opacity: 1;
-}
-
-/* OnlineRadioBox Player Styling */
-.orbP {
-    margin: 20px 0 !important;
 }
 
 @media (max-width: 600px) {
-    .social-links {
-        gap: 6px;
-    }
-
-    .social-links a {
-        padding: 6px;
-    }
-
-    .social-links img {
-        width: 24px;
-        height: 24px;
-    }
-
-    .twocolumns {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-    }
-
-    .twocolumns a {
-        padding: 10px 8px;
-        font-size: 0.9em;
-    }
-
-    .header h1 {
-        font-size: 2em;
-    }
-
-    .header h1 img {
-        max-width: 250px;
-    }
-
-    .stream-links {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .stream-links a {
-        padding: 12px 15px;
-        text-align: center;
-        font-size: 1em;
-        line-height: 1.4;
-    }
+    .twocolumns { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .header h1 { font-size: 2em; }
+    .stream-links { flex-direction: column; }
+    .social-links { gap: 8px; }
 }
