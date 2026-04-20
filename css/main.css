@@ -180,38 +180,37 @@ body {
     font-size: 0.9em;
 }
 
-/* --- Social and Address --- */
+/* --- Social, Address & Footer (Tightened) --- */
+.social {
+    margin: 20px 0 0; /* Only top margin */
+}
+
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
     list-style: none;
     padding: 0;
-    margin: 20px 0;
-    flex-wrap: wrap;
+    margin: 15px 0 0; /* Reduced margin */
 }
 
 .social-links a {
     display: block;
-    padding: 10px;
+    padding: 8px;
     background: #f8f9fa;
     border-radius: 50%;
     transition: all 0.3s ease;
-    border: 2px solid transparent;
 }
 
 .social-links a:hover {
     background: var(--primary-color);
-    border-color: var(--primary-color);
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(47,99,160,0.3);
 }
 
 .social-links img {
     width: 32px;
     height: 32px;
     display: block;
-    transition: filter 0.3s ease;
 }
 
 .social-links a:hover img {
@@ -220,31 +219,31 @@ body {
 
 address {
     text-align: center;
-    margin: 30px 0;
-    padding: 20px;
+    margin: 10px 0 0; /* Very small top margin to pull it up */
+    padding: 15px;
     background: #f8f9fa;
     border-radius: 6px;
     font-style: normal;
 }
 
-address a {
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: 500;
-}
-
 .footer {
     text-align: center;
-    margin-top: 40px;
-    padding-top: 20px;
+    margin-top: 15px; /* Single point of control for the gap */
+    padding-top: 15px;
     border-top: 1px solid #eee;
 }
 
 .footer .small-text {
-    background: none;
-    border: none;
-    padding: 10px 0;
+    margin: 5px 0;
+    padding: 0;
+    font-size: 0.85em;
 }
+
+.spl-image {
+    margin: 5px 0;
+    opacity: 0.8;
+}
+
 
 @media (max-width: 600px) {
     .twocolumns { grid-template-columns: repeat(2, 1fr); gap: 8px; }
