@@ -1,0 +1,15 @@
+# Totally RAD Radio (TRR)
+
+A premium, clutter-free internet radio station broadcasting retro hits from the 1980s to the early 2000s. 
+
+## Station Overview
+- **Formats & Genres:** Pop, Rock, Rap, R&B, and Alternative from the 80s, 90s, and early 2000s.
+- **Programming Philosophy:** Focused purely on the music with no DJ chatter or unnecessary on-air clutter.
+- **Morning Show:** Features the "Van Camp & Morgan Show" during morning broadcast hours.
+
+## Technical & Streaming Specifications
+The station is optimized for high-fidelity audio delivery and accessible via direct streaming URLs and custom smart home integration (including a dedicated Amazon Alexa Skill).
+
+### Audio Streams
+- **High-Quality Stream:** 128 kb/s LC-AAC (Advanced Audio Coding - Low Complexity)
+- **Bandwidth-Efficient Stream:** 64 kb/s HE-AAC (High-Efficiency Advanced Audio Coding)
