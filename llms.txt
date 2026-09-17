@@ -1,15 +1,31 @@
 # Totally RAD Radio
 
-A premium, clutter-free internet radio station broadcasting retro hits from the 1980s to the early 2000s. 
+> A premium, clutter-free internet radio station broadcasting retro hits from the 1980s, 1990s, and early 2000s across pop, rock, rap, R&B, and alternative genres.
 
-## Station Overview
-- **Formats & Genres:** Pop, Rock, Rap, R&B, and Alternative from the 80s, 90s, and early 2000s.
-- **Programming Philosophy:** Focused purely on the music with no DJ chatter or unnecessary on-air clutter.
-- **Morning Show:** Features the "Van Camp & Morgan Show" during morning broadcast hours.
+## Quick Links
+- **Website:** https://totallyradradio.com
+- **Listen Live:** https://totallyradradio.com/#listen
+- **LLC / Operator:** SuiteSounds Entertainment, LLC
 
-## Technical & Streaming Specifications
-The station is optimized for high-fidelity audio delivery and accessible via direct streaming URLs and custom smart home integration (including a dedicated Amazon Alexa Skill).
+## Programming & Format
+- **Genres & Formats:** 80s, 90s, and 2000s Pop, Rock, Rap, R&B, and Alternative.
+- **Programming Philosophy:** Music-intensive presentation focused purely on retro hits with minimal commercial interruption.
+- **Morning Show:** *The Van Camp & Morgan Show* (Weekdays).
 
-### Audio Streams
-- **High-Quality Stream:** 128 kb/s LC-AAC (Advanced Audio Coding - Low Complexity)
-- **Bandwidth-Efficient Stream:** 64 kb/s HE-AAC (High-Efficiency Advanced Audio Coding)
+## Smart Home & Voice Integration
+- **Amazon Alexa Skill:** Enable the "Totally RAD Radio" skill on Amazon Alexa devices.
+- **Voice Command:** Say *"Alexa, play Totally RAD Radio"* or *"Alexa, open Totally RAD Radio"*.
+
+## Audio Stream Specifications
+The station utilizes high-fidelity audio processing optimized for crystal-clear sound across home setups, mobile devices, and internet radio platforms.
+
+- **Standard Stream:** 128 kbps LC-AAC (Advanced Audio Coding - Low Complexity)
+- **Mobile / Low-Bandwidth Stream:** 64 kbps HE-AAC (High-Efficiency Advanced Audio Coding)
+
+## Contact & Social Media
+- **Email:** help@totallyradradio.com
+- **Facebook:** https://www.facebook.com/totallyradradio
+- **X / Twitter:** https://x.com/totallyradradio
+- **Instagram:** https://instagram.com/totallyradradio
+- **Threads:** https://www.threads.net/@totallyradradio
+- **Bluesky:** https://bsky.app/profile/totallyradradio.com
