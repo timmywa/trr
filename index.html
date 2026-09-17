@@ -4,20 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Totally RAD Radio - Listen Live</title>
-    
-    <link rel="preconnect" href="https://onlineradiobox.com" crossorigin>
-    <link rel="dns-prefetch" href="https://cdn.onlineradiobox.com">
-    <link rel="dns-prefetch" href="https://ecdn.onlineradiobox.com">
-    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="stylesheet" href="css/main.css?v=1.6">
 
-    <link rel="preload" href="css/main.css?v=1.6" as="style">
-    <link rel="preload" href="/images/trr-logo.webp" as="image" fetchpriority="high">
-    
     <meta name="description" content="Tune into Totally RAD Radio for retro radio hits from the 80s to the early 2000s. Listen live now!">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://totallyradradio.com/">
     
+    <!-- Open Graph / Social -->
     <meta property="og:title" content="Totally RAD Radio - Listen Live">
     <meta property="og:site_name" content="Totally RAD Radio">
     <meta property="og:description" content="Tune into Totally RAD Radio for retro radio hits from the 80s to the early 2000s. Listen live now!">
@@ -25,36 +18,26 @@
     <meta property="og:url" content="https://totallyradradio.com/">
     <meta property="og:image" content="https://totallyradradio.com/images/trr-logo.webp">
     
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@totallyradradio">
-    <meta name="twitter:image" content="https://totallyradradio.com/images/trr-logo.webp">
-    
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-    <link rel="manifest" href="/site.webmanifest">
     
-    <link rel="stylesheet" href="css/main.css?v=1.6">
+    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "RadioStation",
+      "@type": "RadioBroadcastService",
       "name": "Totally RAD Radio",
       "url": "https://totallyradradio.com/",
+      "logo": "https://totallyradradio.com/images/trr-logo.webp",
       "slogan": "Retro radio hits from the 80s to the early 2000s.",
-      "description": "Tune into Totally RAD Radio for retro radio hits from the 80s to the early 2000s. Listen live now!",
-      "sameAs": [
-        "https://www.facebook.com/trr.radio",
-        "https://x.com/totallyradradio",
-        "https://instagram.com/totallyradradio"
-      ]
+      "description": "Tune into Totally RAD Radio for retro radio hits from the 80s to the early 2000s. Listen live now!"
     }
     </script>
 </head>
 <body>
     <main class="container">
-        <header class="header" role="banner">
+        <header class="header">
             <a href="https://totallyradradio.com/" class="logo-link">
-                <img src="/images/trr-logo.webp" alt="Totally RAD Radio Logo" fetchpriority="high" loading="eager" width="300" height="300">
+                <img src="/images/trr-logo.webp" alt="Totally RAD Radio Logo" width="300" height="300">
             </a>
             <h1>Totally RAD Radio!</h1>
             <h2>Listen to retro radio hits from the 80s to the early 2000s!</h2>
@@ -62,71 +45,68 @@
 
         <section class="listen" id="main-listen-section">
             <h2>Listen LIVE!</h2>
-          <!--OnlineRadioBox Player widget-->
-<div class="orbP cmpct" id="orb_player_31641a3484918225" vlm="0.8">
-<style media="screen">
-    /* General */
-  .orbP{position:relative;box-sizing:border-box;overflow:hidden;font-weight:normal;border:1px solid transparent;user-select:none;text-align:left}.orbP br,.orbP>br{display:none!important;}.orbP p,.orbP>p{margin:0!important;padding:0!important;line-height:normal!important;font-size:inherit!important}.orbPh{display:block;position:absolute;z-index:100;top:50%;margin-top:-12px!important;right:10px;width:21px!important;text-decoration:none!important;cursor:pointer}.orbPh>img{margin:0!important;border:none;height:24px!important;-webkit-filter:drop-shadow(2px 2px 0 rgba(47,99,160,.2));filter:drop-shadow(2px 2px 0 rgba(47,99,160,.2))}.orbPt{text-decoration:none!important}.orbPti{float:left;margin:0 10px 0 0!important;vertical-align:top!important;height:48px!important;width:89px!important;border:none!important;border-radius:2px!important;opacity:1!important}.orbPtn{display:block;margin-right:52px;line-height:24px!important;font-size:17px!important;font-weight:bold!important;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}.orbPtt{display:block;margin-right:52px;text-decoration:none!important;line-height:24px!important;font-size:12px!important;opacity:.85;transition:opacity .2s;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}.orbPtt:hover{opacity:1}.orbPp,.orbPs{float:left!important;margin:0 10px 0 0!important;padding:0!important;height:48px!important;width:48px!important;line-height:48px!important;border-radius:2px!important;border:none!important;text-align:center!important;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none!important;}.orbPp::before,.orbPs::before{display:inline-block;vertical-align:middle;content:'';width:0;height:0;border-style:solid}.orbPp::before{border-width:16px 0 16px 26px}.orbPs::before{border-width:16px}.orbPp:hover,.orbPs:hover{-webkit-transform:scale(1.087);transform:scale(1.087)}.orbPhc{position:relative!important;box-sizing:border-box!important;padding:10px!important;overflow:hidden}
-    /* Playlist */
-  .orbPpl{position:relative;overflow:auto;overflow-x:hidden;overflow-y:auto;margin:0!important;padding:0!important;list-style:none!important}.orbPpli{box-sizing:border-box;margin:0!important;padding:0 10px!important;list-style:none!important;background-image:none;float:none!important;height: auto!important}.orbPpli>a,.orbPpli>span{display:block!important;padding:0!important;margin:0!important;height:auto!important;font-weight:normal!important;text-decoration:none!important;line-height:32px!important;font-size:14px!important;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;transition:color .125s;border:none !important;text-align:left!important;}.orbPpli>a:hover,.orbPpli>span:hover{background:transparent!important}.orbPpli>a>time,.orbPpli>span>time{display:inline-block;font-size:12px!important;width:3em!important}.orbPpli+li{border-style:solid!important;border-width:1px 0 0!important}
-    /* Volume */
-    .orbV{position:absolute;z-index:1!important;width:24px!important;right:48px!important;top:0!important;bottom:0!important;line-height:1!important;overflow:hidden!important;transition:width .3s}.orbV:hover{width:160px!important}.orbVC{position:absolute!important;height:18px!important;left:24px!important;top:50%!important;margin:-9px 0 0 11px!important}.orbVC::after{display:block;content:'';margin-top:4px;width:0;height:0;border-style:solid;border-width:4px 100px 4px 0;opacity:.33}.orbVCs{position:absolute!important;z-index:2!important;top:0!important;width:18px!important;height:18px!important;border-radius:50%!important;cursor:ew-resize!important;box-shadow:0 6px 8px -2px rgba(0,9,18,0.36)}.orbVb{position:absolute!important;width:24px!important;height:24px!important;top:50%!important;left:0!important;margin-top:-12px;white-space:nowrap!important;cursor:pointer;transition:opacity .3s}.orbVb::before{display:inline-block;content:'';vertical-align:middle;width:7px;height:12px}.orbVb::after{display:inline-block;content:'';vertical-align:middle;border-width:12px 12px 12px 0;border-style:solid;height:0;width:0;margin-left:-6px}.orbV:hover .orbVb{opacity:.33!important;cursor:default}.orbVb>._m{display: block!important;width:7px!important;height:18px!important;position:absolute!important;top:50%;margin-top:-9px!important;right:0; overflow: hidden!important;}.orbVb>._m::before{display:block;content:'';position:absolute;right:0;top:50%;width:28px;height:24px;margin-top:-12px;border:1px solid;border-radius:50%}.orbVb>._m::after{display:block;content:'';position:absolute;right:4px;top:50%;width:14px;height:14px;margin-top:-7px;border:1px solid;border-radius:50%}
-    /* Flags*/
-  .orbF{padding:0 0 10px 10px!important;border-top:1px solid;display:-ms-flexbox;display:-webkit-box;display:flex;-ms-flex-flow:row nowrap!important;flex-flow:row nowrap!important}
-  .orbFl{margin:0!important;padding:0!important;list-style:none!important}
-  .orbFli,.orbFh{display:inline-block!important;vertical-align:top!important;line-height:18px!important;white-space:nowrap!important;margin:10px 7px 0 0!important;padding:0 6px 0 0!important;text-indent:0!important;list-style:none!important;font-size:11px!important;text-align:right}
-  .orbFlif{float:left!important;width:27px!important;height:18px!important;margin-right:5px!important}
-  .orbFhi{position:relative!important;display:inline-block!important;vertical-align:baseline!important;width:8px!important;height:9px!important;margin:0 8px 0 5px!important;border-style:solid!important;border-width:2px 1px 0 1px!important;border-radius:5px 5px 0 0!important;opacity:.5}
-  .orbFhi::before,.orbFhi::after{display:block;content:'';position:absolute;bottom:-2px;width:0;height:3px;border-style:solid;border-width:2px;border-radius:3px}
-  .orbFhi::before{left:-4px}.orbFhi::after{right:-4px}
-    /* Multiselect */
-  .orbPm{margin:0!important;padding:0!important;list-style:none!important}
-  .orbPmi{position:relative;margin:0!important;padding:10px!important;list-style:none!important;border:dotted rgba(204,204,204,0.5);border-width:1px 0 0;font-size:12px!important;overflow:hidden;white-space:nowrap;line-height:1!important;cursor:pointer}
-  .orbPmi::before{display:block;content:'';position:absolute;z-index:1;top:50%;right:10px;margin-top:-8px;width:0;height:0;border-style:solid;border-width:8px 0 8px 13px;opacity:.5;filter:alpha(opacity=50);transition:opacity .2s;}
-  .orbPmi:hover::before{opacity:1;filter:alpha(opacity=100)}
-  .orbPmi::after{display:block;content:'';position:absolute;top:0;bottom:0;right:0;width:36px}
-  .orbPmii{display:inline-block;vertical-align:middle;margin-right:10px;width:30px;height:16px;border:none!important;border-radius:2px!important}
-  .orbPmin{display:inline-block;vertical-align:middle;}
-
-    /* Compact General */
-  .cmpct .orbPti{height:24px!important;width:44px!important}
-  .cmpct .orbPtn{line-height:12px!important;font-size:12px!important}
-  .cmpct .orbPtt{line-height:12px!important;font-size:10px!important}
-  .cmpct .orbPp,.cmpct .orbPs{height:24px!important;width:24px!important;line-height:24px!important}
-  .cmpct .orbPp::before{border-width:8px 0 8px 13px !important}
-  .cmpct .orbPs::before{border-width:8px !important}
-    /* Compact w/Playlist */
-  .cmpct .orbPpli>a,.cmpct .orbPpli>span{line-height:24px!important;font-size:12px!important}
-  .cmpct .orbPpli>a>time,.cmpct .orbPpli>span>time{font-size:11px!important}
-
-</style>
-<style media="screen" id="orb_player_31641a3484918225_settings">.orbP{background-color:#000000 !important;}/*common player background*/.orbP{border-style: solid; border-color:#2f63a0 !important;border-radius:5px;}/*common player container border, radius, width*/.orbPp,.orbPs{background:#7094bf !important}/*buttons play/stop bg*/.orbPp::before{border-color:transparent transparent transparent #ffffff !important} /* play button color */.orbPs::before{border-color:#ffffff !important} /* stop button color */.orbPtn,.orbPtt,.orbPtt:hover{color:#ffffff !important;}/*station name & track link color*/.orbPpl{height:100px;background:#ffffff !important;}/*playlist height, playlist bg */.orbPpli>a,.orbPpli>a:visited,.orbPpli>span,.orbPpli>a:hover>time,.orbPpli.a>a>time,.orbPpli.a>span>time{color:#444444 !important;} /* playlist items color */.orbPpli>a:hover,.orbPpli.a>a,.orbPpli.a>span{color:#f07700 !important;} /* active-item color */.orbPpli>a>time,.orbPpli>span>time{color:#aeaeae !important;} /* item time color */.orbPpli.a{background:#f3f3f3 !important;} /* active-item bg */.orbPpli+li{border-color:#eeeeee !important;} /* item border color */.orbV{background-color:#000000 !important;box-shadow:0 0 32px 32px #000000 !important}/*volume control color */.orbVC::after,.orbVb::after{border-color:transparent #ffffff transparent transparent !important}.orbVb::before,.orbVCs{background:#ffffff !important} /* volume bg color */.orbVb>._m::before,.orbVb>._m::after{border-color:#ffffff !important}.orbF{background:#ffffff !important;color:#444444 !important;border-color:#000000 !important}/* geo background & text color  */.orbFli,.orbFlif{box-shadow:0 0 1px 0 #444 inset !important}.orbFhi,.orbFhi::before,.orbFhi::after{border-color:#444 !important}</style>
-<div class="orbPhc">
-  <a class="orbPh" href="https://onlineradiobox.com/us/" title="Listen on Online Radio Box!" target="_blank"><img src="//ecdn.onlineradiobox.com/img/wl.svg" alt="Listen on Online Radio Box!"></a>
-<audio id="orb_player_31641a3484918225_p" crossorigin="true" style="width:1px;height:1px;overflow:hidden;position:absolute;"></audio>
-
-  <button class="orbPp" title="Listen live" country="us" alias="totallyrad" stream="1"></button>
-  <a class="orbPt" href="https://onlineradiobox.com/us/totallyrad/" target="_blank"><img class="orbPti" src="//cdn.onlineradiobox.com/img/logo/3/140503.png" alt="Totally RAD Radio"><span class="orbPtn">Totally RAD Radio</span></a>
-  <span class="orbPtt" loading="loading" playing="playing" error="playback error" not_supported="this browser can't play it" external="Listen now (Opens in popup player)" geo_blocked="Not available in your country"></span>
-  <div class="orbV"><div class="orbVb"><i class="_m"></i></div><div class="orbVC"><div class="orbVCs" style="left: 80%;"></div></div></div>
-</div>
-<ul class="orbPpl"></ul>
-<div class="orbF" style="display:none"></div>
-<script>
-  var orbp_w = orbp_w || { lang: "en-us" };
-  orbp_w.cmd = orbp_w.cmd || [];
-  orbp_w.apiUrl = "https://onlineradiobox.com";
-  orbp_w.cmd.push(function() {
-    orbp_w.init("orb_player_31641a3484918225");
-  });
-  var s, t; s = document.createElement('script'); s.type = 'text/javascript';
-s.src = "//ecdn.onlineradiobox.com/js/pwidget2.min.235ca64e.js";
-  t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(s, t);
-</script>
-</div>
-<!--OnlineRadioBox Player widget-->
-
             
+            <!-- Safe Wrapped OnlineRadioBox Player Widget -->
+            <div class="radio-widget-wrapper" style="min-height: 120px; background: #2f63a0; padding: 10px; border-radius: 8px; margin-bottom: 20px;">
+                <div class="orbP cmpct" id="orb_player_31641a3484918225" vlm="0.8">
+                    <style>
+                      .orbP{position:relative;box-sizing:border-box;overflow:hidden;font-weight:normal;user-select:none;text-align:left}
+                      .orbP br,.orbP>br{display:none!important;}
+                      .orbP p,.orbP>p{margin:0!important;padding:0!important;line-height:normal!important;font-size:inherit!important}
+                      .orbPh{display:block;position:absolute;z-index:100;top:50%;margin-top:-12px!important;right:10px;width:21px!important;text-decoration:none!important;cursor:pointer}
+                      .orbPh>img{margin:0!important;border:none;height:24px!important;}
+                      .orbPt{text-decoration:none!important}
+                      .orbPti{float:left;margin:0 10px 0 0!important;vertical-align:top!important;height:48px!important;width:89px!important;border:none!important;border-radius:2px!important;opacity:1!important}
+                      .orbPtn{display:block;margin-right:52px;line-height:24px!important;font-size:17px!important;font-weight:bold!important;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
+                      .orbPtt{display:block;margin-right:52px;text-decoration:none!important;line-height:24px!important;font-size:12px!important;opacity:.85;transition:opacity .2s;text-overflow:ellipsis;overflow:hidden;white-space:nowrap}
+                      .orbPp,.orbPs{float:left!important;margin:0 10px 0 0!important;padding:0!important;height:48px!important;width:48px!important;line-height:48px!important;border-radius:2px!important;border:none!important;text-align:center!important;cursor:pointer;}
+                      .orbPp::before,.orbPs::before{display:inline-block;vertical-align:middle;content:'';width:0;height:0;border-style:solid}
+                      .orbPp::before{border-width:16px 0 16px 26px}
+                      .orbPs::before{border-width:16px}
+                      .orbPhc{position:relative!important;box-sizing:border-box!important;padding:10px!important;overflow:hidden}
+                      .orbPpl{position:relative;overflow:auto;overflow-x:hidden;overflow-y:auto;margin:0!important;padding:0!important;list-style:none!important}
+                      .orbPpli{box-sizing:border-box;margin:0!important;padding:0 10px!important;list-style:none!important;background-image:none;float:none!important;height: auto!important}
+                      .orbPpli>a,.orbPpli>span{display:block!important;padding:0!important;margin:0!important;height:auto!important;font-weight:normal!important;text-decoration:none!important;line-height:32px!important;font-size:14px!important;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;}
+                      .orbV{position:absolute;z-index:1!important;width:24px!important;right:48px!important;top:0!important;bottom:0!important;line-height:1!important;overflow:hidden!important;transition:width .3s}
+                      .orbV:hover{width:160px!important}
+                      .orbVC{position:absolute!important;height:18px!important;left:24px!important;top:50%!important;margin:-9px 0 0 11px!important}
+                      .orbVCs{position:absolute!important;z-index:2!important;top:0!important;width:18px!important;height:18px!important;border-radius:50%!important;cursor:ew-resize!important}
+                      .orbVb{position:absolute!important;width:24px!important;height:24px!important;top:50%!important;left:0!important;margin-top:-12px;white-space:nowrap!important;cursor:pointer}
+                      .orbVb>._m{display: block!important;width:7px!important;height:18px!important;position:absolute!important;top:50%;margin-top:-9px!important;right:0; overflow: hidden!important;}
+                      .cmpct .orbPti{height:24px!important;width:44px!important}
+                      .cmpct .orbPtn{line-height:12px!important;font-size:12px!important}
+                      .cmpct .orbPtt{line-height:12px!important;font-size:10px!important}
+                      .cmpct .orbPp,.cmpct .orbPs{height:24px!important;width:24px!important;line-height:24px!important}
+                      .cmpct .orbPp::before{border-width:8px 0 8px 13px !important}
+                      .cmpct .orbPs::before{border-width:8px !important}
+                      .cmpct .orbPpli>a,.cmpct .orbPpli>span{line-height:24px!important;font-size:12px!important}
+                    </style>
+                    <style id="orb_player_31641a3484918225_settings">
+                      .orbP{background-color:#2f63a0 !important; border-radius:5px;}
+                      .orbPp,.orbPs{background:#7094bf !important}
+                      .orbPp::before{border-color:transparent transparent transparent #ffffff !important}
+                      .orbPs::before{border-color:#ffffff !important}
+                      .orbPtn,.orbPtt,.orbPtt:hover{color:#ffffff !important;}
+                      .orbPpl{height:100px;background:#ffffff !important;}
+                      .orbPpli>a,.orbPpli>a:visited,.orbPpli>span{color:#444444 !important;}
+                      .orbPpli>a:hover{color:#f07700 !important;}
+                      .orbPpli>time{color:#aeaeae !important;}
+                      .orbPpli.a{background:#f3f3f3 !important;}
+                      .orbV{background-color:#2f63a0 !important;}
+                      .orbVCs,.orbVb::before{background:#ffffff !important}
+                    </style>
+                    <div class="orbPhc">
+                      <a class="orbPh" href="https://onlineradiobox.com/us/" title="Listen on Online Radio Box!" target="_blank"><img src="https://ecdn.onlineradiobox.com/img/wl.svg" alt="Listen on Online Radio Box!"></a>
+                      <audio id="orb_player_31641a3484918225_p" crossorigin="true" style="width:1px;height:1px;overflow:hidden;position:absolute;"></audio>
+                      <button class="orbPp" title="Listen live" country="us" alias="totallyrad" stream="1"></button>
+                      <a class="orbPt" href="https://onlineradiobox.com/us/totallyrad/" target="_blank"><img class="orbPti" src="https://cdn.onlineradiobox.com/img/logo/3/140503.png" alt="Totally RAD Radio"><span class="orbPtn">Totally RAD Radio</span></a>
+                      <span class="orbPtt" loading="loading" playing="playing" error="playback error" not_supported="this browser can't play it" external="Listen now" geo_blocked="Not available"></span>
+                      <div class="orbV"><div class="orbVb"><i class="_m"></i></div><div class="orbVC"><div class="orbVCs" style="left: 80%;"></div></div></div>
+                    </div>
+                    <ul class="orbPpl"></ul>
+                </div>
+            </div>
+
             <div class="stream-links">
                 <a href="https://ais-sa2.cdnstream1.com/1977_128.aac" target="_blank" rel="noopener noreferrer">PLAY 128 kb/s AAC (desktop)</a>
                 <a href="https://ais-sa2.cdnstream1.com/1977_64.aac" target="_blank" rel="noopener noreferrer">PLAY 64 kb/s HE-AAC (mobile)</a>
@@ -158,98 +138,66 @@ s.src = "//ecdn.onlineradiobox.com/js/pwidget2.min.235ca64e.js";
                         <li><a href="https://radioguide.fm/internet-radio-usa-utah/totally-rad-radio" target="_blank" rel="noopener noreferrer">RadioGuide.FM</a></li>
                     </ul>
                 </div>
-                <button onclick="toggleServices()" id="view-more-btn" class="show-more-btn">View All Services</button>
+                <button type="button" onclick="toggleServices()" id="view-more-btn" class="show-more-btn">View All Services</button>
             </div>
 
             <p class="small-text">NOTE: Clicking the links above will open a new page and audio may begin playing automatically.</p>
         </section>
 
-<section class="social">
-    <h2>Get Social!</h2>
-    <ul class="social-links">
-        <li>
-            <a href="https://www.facebook.com/trr.radio" target="_blank" rel="noopener noreferrer" aria-label="Facebook" title="Follow us on Facebook">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
-                </svg>
-            </a>
-        </li>
-        <li>
-            <a href="https://www.instagram.com/totallyradradio" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Follow us on Instagram">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
-                </svg>
-            </a>
-        </li>
-        <li>
-            <a href="https://www.threads.net/@totallyradradio" target="_blank" rel="noopener noreferrer" aria-label="Threads" title="Follow us on Threads">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.292 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.781 3.632 2.695 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.790-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.47-1.364 0 0-.648-.642-1.978-.69-1.118-.04-2.282.164-3.063.9-.843.794-1.222 1.974-1.222 1.974l-1.72-.453s.416-1.545 1.518-2.633c1.122-1.106 2.782-1.429 4.396-1.378 1.878.059 3.025.895 3.025.895.565.565 1.033 1.472 1.248 2.48a9.086 9.086 0 0 1 2.181 1.447c1.04.97 1.7 2.250 1.968 3.805.616 3.573-1.194 6.04-3.542 7.443-1.618.967-3.584 1.35-5.842 1.364zm3.314-14.7c-1.857-.03-3.583.123-4.844.372.494.372 1.375 1.193 1.375 3.908 0 .969-.179 1.827-.533 2.565a7.842 7.842 0 0 0 1.79-2.565c.533-1.07.794-2.59.794-4.51 0-1.193-.18-2.016-.582-2.77z"/>
-                    </svg>
-            </a>
-        </li>
-        <li>
-            <a href="https://x.com/totallyradradio" target="_blank" rel="noopener noreferrer" aria-label="X" title="Follow us on X">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
-            </a>
-        </li>
-        <li>
-            <a href="https://bsky.app/profile/totallyradradio.com" target="_blank" rel="noopener noreferrer" aria-label="Bluesky" title="Follow us on Bluesky">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 2.105.139 3.107.139 5.498.139 6.789c0 1.24.375 2.533.936 3.714.561 1.181 1.354 2.293 2.209 3.293C5.225 15.849 7.724 17.849 12 18.4c4.276-.551 6.775-2.551 8.716-4.604.855-1 1.648-2.112 2.209-3.293.561-1.181.936-2.474.936-3.714 0-1.291 0-3.682-.763-4.684C22.439 1.266 21.434.944 18.798 2.805 16.046 4.747 13.087 8.686 12 10.8z"/>
-                </svg>
-            </a>
-        </li>
-    </ul>
-</section>
+        <section class="social">
+            <h2>Get Social!</h2>
+            <ul class="social-links">
+                <li><a href="https://www.facebook.com/trr.radio" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a></li>
+                <li><a href="https://www.instagram.com/totallyradradio" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a></li>
+                <li><a href="https://www.threads.net/@totallyradradio" target="_blank" rel="noopener noreferrer" aria-label="Threads">Threads</a></li>
+                <li><a href="https://x.com/totallyradradio" target="_blank" rel="noopener noreferrer" aria-label="X">X</a></li>
+                <li><a href="https://bsky.app/profile/totallyradradio.com" target="_blank" rel="noopener noreferrer" aria-label="Bluesky">Bluesky</a></li>
+            </ul>
+        </section>
         
-        <address itemscope itemtype="https://schema.org/Organization">
-            If you need help or something isn't working right, please <a href="mailto:help@totallyradradio.com" itemprop="email">email</a>, text, or call us: <a href="tel:+18017884916" itemprop="telephone">+1 (801) 788-4916</a>.
+        <address>
+            If you need help or something isn't working right, please <a href="mailto:help@totallyradradio.com">email</a>, text, or call us: <a href="tel:+18017884916">+1 (801) 788-4916</a>.
         </address>
     </main>
 
     <footer class="footer">
         <p class="smaller-text">Thank you for visiting Totally RAD Radio!</p>
         <p class="smaller-text">Copyright © 2024 - <span id="year"></span> SuiteSounds Entertainment, LLC. All rights reserved.</p>
-        <a href="https://stationplaylist.com" target="_blank" rel="noopener noreferrer"><img src="images/splpowered.png" alt="Powered By Station Playlist" loading="lazy" width="88" height="31" class="spl-image"></a><a href="https://angryaudio.com/products/c6s/" target="_blank" rel="noopener noreferrer"><img src="images/AAlogo88x31.jpg" alt="Angry Audio Chameleon Audio Processing" width="88" height="31" loading="lazy" class="spl-image"></a>
-        <form action="https://www.paypal.com/donate" method="post" target="_blank">
-            <input type="hidden" name="campaign_id" value="97J5C2DDTULW4">
-            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" name="submit" alt="Donate with PayPal">
-        </form>
+        <div class="partner-logos">
+            <a href="https://stationplaylist.com" target="_blank" rel="noopener noreferrer"><img src="images/splpowered.png" alt="Powered By Station Playlist" width="88" height="31" class="spl-image"></a>
+            <a href="https://angryaudio.com/products/c6s/" target="_blank" rel="noopener noreferrer"><img src="images/AAlogo88x31.jpg" alt="Angry Audio Chameleon Audio Processing" width="88" height="31" class="spl-image"></a>
+        </div>
     </footer>
+
+    <!-- Widget script moved to body end so it executes after DOM load -->
+    <script>
+      var orbp_w = orbp_w || { lang: "en-us" };
+      orbp_w.cmd = orbp_w.cmd || [];
+      orbp_w.apiUrl = "https://onlineradiobox.com";
+      orbp_w.cmd.push(function() {
+        orbp_w.init("orb_player_31641a3484918225");
+      });
+    </script>
+    <script src="https://ecdn.onlineradiobox.com/js/pwidget2.min.235ca64e.js" async></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Update copyright year
             const yearElement = document.getElementById("year");
             if (yearElement) yearElement.textContent = new Date().getFullYear();
         });
 
-        // Show More / Show Less Logic
         function toggleServices() {
             const wrapper = document.getElementById('services-wrapper');
             const btn = document.getElementById('view-more-btn');
-            wrapper.classList.toggle('expanded');
+            const expanded = wrapper.classList.toggle('expanded');
             
-            if (wrapper.classList.contains('expanded')) {
-                btn.textContent = 'Show Less';
-            } else {
-                btn.textContent = 'View All Services';
+            btn.textContent = expanded ? 'Show Less' : 'View All Services';
+            btn.setAttribute('aria-expanded', expanded);
+            
+            if (!expanded) {
                 document.getElementById('main-listen-section').scrollIntoView({ behavior: 'smooth' });
             }
         }
     </script>
-    
-    <script defer async src="https://www.googletagmanager.com/gtag/js?id=G-2WKFJL655E"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-2WKFJL655E');
-    </script>
-    <script defer async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7092128557292662" crossorigin="anonymous"></script>
-    <script defer src="//ecdn.onlineradiobox.com/js/pwidget2.min.235ca64e.js"></script>
 </body>
 </html>
