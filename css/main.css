@@ -22,7 +22,7 @@
   font-family: 'Rajdhani';
   font-style: normal;
   font-weight: 400;
-  font-display: optional;
+  font-display: swap;
   src: url('../fonts/rajdhani-v17-latin-regular.woff2') format('woff2');
 }
 
@@ -31,7 +31,7 @@
   font-family: 'Rajdhani';
   font-style: normal;
   font-weight: 500;
-  font-display: optional;
+  font-display: swap;
   src: url('../fonts/rajdhani-v17-latin-500.woff2') format('woff2');
 }
 
@@ -40,7 +40,7 @@
   font-family: 'Rajdhani';
   font-style: normal;
   font-weight: 600;
-  font-display: optional;
+  font-display: swap;
   src: url('../fonts/rajdhani-v17-latin-600.woff2') format('woff2');
 }
 
@@ -49,7 +49,7 @@
   font-family: 'Rajdhani';
   font-style: normal;
   font-weight: 700;
-  font-display: optional;
+  font-display: swap;
   src: url('../fonts/rajdhani-v17-latin-700.woff2') format('woff2');
 }
 
