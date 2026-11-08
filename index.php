@@ -29,7 +29,6 @@ function getITunesArtwork($artist, $title) {
     if ($json) {
         $data = json_decode($json, true);
         if (!empty($data['results'][0]['artworkUrl100'])) {
-            // Upgrade artwork resolution from 100x100 to 300x300
             return str_replace('100x100bb', '300x300bb', $data['results'][0]['artworkUrl100']);
         }
     }
@@ -45,7 +44,6 @@ if (file_exists($history_file)) {
         
         $display_saved = array_filter($display_saved);
         if (!empty($display_saved)) {
-            // Top item is current live song
             $top_full = array_shift($display_saved);
             if (strpos($top_full, ' - ') !== false) {
                 list($initial_current_artist, $initial_current_title) = explode(' - ', $top_full, 2);
@@ -54,12 +52,19 @@ if (file_exists($history_file)) {
             }
             $initial_artwork = getITunesArtwork($initial_current_artist, $initial_current_title);
             
-            // Remaining items form the true past track history
             if (!empty($display_saved)) {
                 $initial_history = array_values(array_slice($display_saved, 0, 3));
             }
         }
     }
+}
+
+function formatTrackHtml($trackString) {
+    if (strpos($trackString, ' - ') !== false) {
+        list($artist, $title) = explode(' - ', $trackString, 2);
+        return '<span class="trr-artist"><strong>' . htmlspecialchars(trim($artist)) . '</strong></span> - <span class="trr-title">' . htmlspecialchars(trim($title)) . '</span>';
+    }
+    return '<span class="trr-title">' . htmlspecialchars($trackString) . '</span>';
 }
 ?>
 <!DOCTYPE html>
@@ -95,14 +100,11 @@ if (file_exists($history_file)) {
     <link rel="manifest" href="/site.webmanifest">
     
     <style>
-        .song-artist, .history-artist { font-weight: bold; }
-        .song-title, .history-title { font-weight: normal; }
-        
         .player-card {
             background: #000000;
             border: 1px solid #2f63a0;
             border-radius: 8px;
-            padding: 20px;
+            padding: 22px;
             margin: 0 auto 20px auto;
             width: 100%;
             max-width: 500px;
@@ -111,13 +113,36 @@ if (file_exists($history_file)) {
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
 
+        .trr-player-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(47, 99, 160, 0.4);
+            padding-bottom: 10px;
+        }
+
+        .trr-live-badge {
+            background: #2f63a0;
+            color: #fff;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 3px 8px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+        }
+
+        .trr-station-slogan {
+            font-size: 13px;
+            color: #7094bf;
+            font-style: italic;
+        }
+
         .now-playing-wrapper {
             display: flex;
             align-items: center;
             gap: 16px;
             margin-bottom: 16px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .album-art-box {
@@ -143,12 +168,13 @@ if (file_exists($history_file)) {
         }
 
         .now-playing-label {
-            font-size: 11px;
+            font-size: 10px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             color: #7094bf;
+            font-weight: bold;
             display: block;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .current-song-text {
@@ -156,40 +182,54 @@ if (file_exists($history_file)) {
             line-height: 1.4;
             word-wrap: break-word;
         }
-        
+
         .trr-audio-player {
             width: 100%;
-            margin: 14px 0 16px 0;
+            margin: 15px 0;
             display: block;
         }
 
         .history-section {
-            margin-top: 12px;
+            margin-top: 15px;
+            border-top: 1px solid rgba(47, 99, 160, 0.4);
+            padding-top: 12px;
         }
 
         .history-label {
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            opacity: 0.7;
+            color: #7094bf;
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .history-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            font-size: 13.5px;
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
         }
 
         .history-list li {
-            padding: 6px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            font-size: 13px;
+            color: #cccccc;
+            padding: 5px 0 !important;
+            margin: 0 !important;
+            background: transparent !important;
+            border: none !important;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1) !important;
+            list-style-type: none !important;
         }
         
         .history-list li:last-child {
-            border-bottom: none;
+            border-bottom: none !important;
+        }
+
+        .trr-artist {
+            font-weight: bold;
+        }
+        .trr-title {
+            font-weight: normal;
         }
     </style>
 
@@ -226,15 +266,19 @@ if (file_exists($history_file)) {
             
             <!-- Metadata & Artwork Centered Card -->
             <div class="player-card">
+                <div class="trr-player-header">
+                    <span class="trr-live-badge">LIVE</span>
+                    <span class="trr-station-slogan">Retro Radio Hits</span>
+                </div>
+
                 <div class="now-playing-wrapper">
                     <div class="album-art-box">
                         <img id="album-art" src="<?php echo htmlspecialchars($initial_artwork); ?>" alt="Album Artwork" width="90" height="90">
                     </div>
                     <div class="track-info">
                         <span class="now-playing-label">Now Playing</span>
-                        <div class="current-song-text">
-                            <span class="song-artist" id="curr-artist"><?php echo htmlspecialchars($initial_current_artist); ?></span> - 
-                            <span class="song-title" id="curr-title"><?php echo htmlspecialchars($initial_current_title); ?></span>
+                        <div class="current-song-text" id="curr-song-container">
+                            <?php echo formatTrackHtml($initial_current_artist . ' - ' . $initial_current_title); ?>
                         </div>
                     </div>
                 </div>
@@ -244,21 +288,12 @@ if (file_exists($history_file)) {
                     <source src="https://ais-sa2.cdnstream1.com/1977_128.aac" type="audio/aac">
                     Your browser does not support the audio element.
                 </audio>
-                
+
                 <div class="history-section">
                     <span class="history-label">Recently Played</span>
                     <ul id="song-history-list" class="history-list">
-                        <?php foreach($initial_history as $hist_item): 
-                            if(strpos($hist_item, ' - ') !== false) {
-                                list($h_art, $h_tit) = explode(' - ', $hist_item, 2);
-                            } else {
-                                $h_art = "Totally RAD Radio";
-                                $h_tit = $hist_item;
-                            }
-                        ?>
-                            <li>
-                                <span class="history-artist"><?php echo htmlspecialchars(trim($h_art)); ?></span> - <span class="history-title"><?php echo htmlspecialchars(trim($h_tit)); ?></span>
-                            </li>
+                        <?php foreach($initial_history as $hist_item): ?>
+                            <li><?php echo formatTrackHtml($hist_item); ?></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
@@ -375,14 +410,13 @@ if (file_exists($history_file)) {
             fetch('nowplaying.php?t=' + Date.now())
                 .then(response => response.json())
                 .then(data => {
-                    if (data && data.current) {
+                    if (data && data.current && data.current.full) {
+                        const trackFull = data.current.full;
                         const artist = data.current.artist || 'Totally RAD Radio';
                         const title = data.current.title || '80s to Early 2000s';
                         
-                        document.getElementById('curr-artist').textContent = artist;
-                        document.getElementById('curr-title').textContent = title;
+                        document.getElementById('curr-song-container').innerHTML = formatTrackHtml(trackFull);
 
-                        // Fetch iTunes artwork whenever track changes
                         const trackKey = artist + " - " + title;
                         if (trackKey !== currentTrackKey) {
                             currentTrackKey = trackKey;
@@ -391,9 +425,8 @@ if (file_exists($history_file)) {
                     }
                     if (data && data.history && Array.isArray(data.history)) {
                         let historyItems = [...data.history];
-                        
-                        // Shift off top item if it matches current live song
                         const liveFull = data.current ? data.current.full : "";
+                        
                         if (historyItems.length > 0 && historyItems[0] === liveFull) {
                             historyItems.shift();
                         }
@@ -402,20 +435,23 @@ if (file_exists($history_file)) {
                         historyList.innerHTML = '';
                         
                         historyItems.slice(0, 3).forEach(item => {
-                            let art = "Totally RAD Radio";
-                            let tit = item;
-                            if (item.includes(' - ')) {
-                                const parts = item.split(' - ');
-                                art = parts[0].trim();
-                                tit = parts.slice(1).join(' - ').trim();
-                            }
                             const li = document.createElement('li');
-                            li.innerHTML = `<span class="history-artist">${escapeHtml(art)}</span> - <span class="history-title">${escapeHtml(tit)}</span>`;
+                            li.innerHTML = formatTrackHtml(item);
                             historyList.appendChild(li);
                         });
                     }
                 })
                 .catch(err => console.error("Error updating metadata:", err));
+        }
+
+        function formatTrackHtml(trackString) {
+            if (trackString.includes(' - ')) {
+                const parts = trackString.split(' - ');
+                const artist = parts[0].trim();
+                const title = parts.slice(1).join(' - ').trim();
+                return `<span class="trr-artist"><strong>${escapeHtml(artist)}</strong></span> - <span class="trr-title">${escapeHtml(title)}</span>`;
+            }
+            return `<span class="trr-title">${escapeHtml(trackString)}</span>`;
         }
 
         function updateArtwork(artist, title) {
