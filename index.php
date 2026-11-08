@@ -156,6 +156,12 @@ if (file_exists($history_file)) {
             line-height: 1.4;
             word-wrap: break-word;
         }
+        
+        .trr-audio-player {
+            width: 100%;
+            margin: 14px 0 16px 0;
+            display: block;
+        }
 
         .history-section {
             margin-top: 12px;
