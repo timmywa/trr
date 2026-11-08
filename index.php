@@ -1,3 +1,34 @@
+<?php
+// Pre-fetch stream data on server-load for instant rendering
+$history_file = __DIR__ . '/song_history.json';
+$initial_current_artist = "Totally RAD Radio";
+$initial_current_title = "80s to Early 2000s";
+$initial_history = [
+    "Michael Jackson - Billie Jean",
+    "Prince - 1999",
+    "Madonna - Like a Prayer"
+];
+
+if (file_exists($history_file)) {
+    $saved_data = json_decode(file_get_contents($history_file), true);
+    if (!empty($saved_data) && is_array($saved_data)) {
+        $display_saved = array_map(function($item) {
+            return is_array($item) ? ($item['title'] ?? '') : $item;
+        }, array_slice($saved_data, 0, 3));
+        
+        $display_saved = array_filter($display_saved);
+        if (!empty($display_saved)) {
+            $initial_history = array_values($display_saved);
+            $top_full = $initial_history[0];
+            if (strpos($top_full, ' - ') !== false) {
+                list($initial_current_artist, $initial_current_title) = explode(' - ', $top_full, 2);
+            } else {
+                $initial_current_title = $top_full;
+            }
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +61,12 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     
+    <style>
+        /* Bold artist / normal title styling */
+        .song-artist, .history-artist { font-weight: bold; }
+        .song-title, .history-title { font-weight: normal; }
+    </style>
+
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
@@ -61,6 +98,34 @@
         <section class="listen" id="main-listen-section">
             <h2>Listen LIVE!</h2>
             
+            <!-- Custom Live Info & History Display Section -->
+            <div class="live-meta-container" style="background:#000000; border:1px solid #2f63a0; border-radius:5px; padding:15px; margin-bottom:20px; color:#ffffff; text-align:left;">
+                <div style="margin-bottom: 12px;">
+                    <span style="font-size:12px; text-transform:uppercase; letter-spacing:1px; opacity:0.8; display:block; margin-bottom:4px;">Now Playing</span>
+                    <span id="current-song-display" style="font-size:16px;">
+                        <span class="song-artist" id="curr-artist"><?php echo htmlspecialchars($initial_current_artist); ?></span> - 
+                        <span class="song-title" id="curr-title"><?php echo htmlspecialchars($initial_current_title); ?></span>
+                    </span>
+                </div>
+                <div>
+                    <span style="font-size:12px; text-transform:uppercase; letter-spacing:1px; opacity:0.8; display:block; margin-bottom:4px;">Recent History</span>
+                    <ul id="song-history-list" style="list-style:none; padding:0; margin:0; font-size:14px;">
+                        <?php foreach($initial_history as $hist_item): 
+                            if(strpos($hist_item, ' - ') !== false) {
+                                list($h_art, $h_tit) = explode(' - ', $hist_item, 2);
+                            } else {
+                                $h_art = "Totally RAD Radio";
+                                $h_tit = $hist_item;
+                            }
+                        ?>
+                            <li style="padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                <span class="history-artist"><strong><?php echo htmlspecialchars(trim($h_art)); ?></strong></span> - <span class="history-title"><?php echo htmlspecialchars(trim($h_tit)); ?></span>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+
             <!--OnlineRadioBox Player widget-->
             <div class="radio-widget-wrapper" style="position: relative; isolation: isolate; overflow: hidden; border-radius: var(--border-radius);">
                 <div class="orbP cmpct" id="orb_player_31641a3484918225" vlm="0.8">
@@ -217,7 +282,47 @@
         document.addEventListener('DOMContentLoaded', () => {
             const yearElement = document.getElementById("year");
             if (yearElement) yearElement.textContent = new Date().getFullYear();
+
+            // Real-time metadata and history polling script
+            setInterval(fetchNowPlaying, 15000);
+            fetchNowPlaying();
         });
+
+        function fetchNowPlaying() {
+            fetch('nowplaying.php?t=' + Date.now())
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.current) {
+                        const artist = data.current.artist || 'Totally RAD Radio';
+                        const title = data.current.title || '80s to Early 2000s';
+                        
+                        document.getElementById('curr-artist').textContent = artist;
+                        document.getElementById('curr-title').textContent = title;
+                    }
+                    if (data && data.history && Array.isArray(data.history)) {
+                        const historyList = document.getElementById('song-history-list');
+                        historyList.innerHTML = '';
+                        data.history.forEach(item => {
+                            let art = "Totally RAD Radio";
+                            let tit = item;
+                            if (item.includes(' - ')) {
+                                const parts = item.split(' - ');
+                                art = parts[0].trim();
+                                tit = parts.slice(1).join(' - ').trim();
+                            }
+                            const li = document.createElement('li');
+                            li.style.cssText = "padding: 4px 0; border-bottom: 1px solid rgba(255,255,255,0.1);";
+                            li.innerHTML = `<span class="history-artist"><strong>${escapeHtml(art)}</strong></span> - <span class="history-title">${escapeHtml(tit)}</span>`;
+                            historyList.appendChild(li);
+                        });
+                    }
+                })
+                .catch(err => console.error("Error updating metadata:", err));
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
 
         function toggleServices() {
             const wrapper = document.getElementById('services-wrapper');
