@@ -90,7 +90,8 @@ if (!$is_default && $top_song !== $current_full) {
     ]);
 
     // Slice to keep exactly 3
-    $history = array_slice($history, 0, 3);
+    $history = array_slice($history, 0, 4);
+
 
     // Save back to disk
     @file_put_contents($history_file, json_encode($history));
@@ -99,7 +100,8 @@ if (!$is_default && $top_song !== $current_full) {
 // Build final display array
 $display_history = array_map(function($item) {
     return is_array($item) ? ($item['title'] ?? '') : $item;
-}, array_slice($history, 0, 3));
+}, array_slice($history, 0, 4));
+
 
 $display_history = array_filter($display_history);
 
