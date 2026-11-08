@@ -41,18 +41,23 @@ if (file_exists($history_file)) {
     if (!empty($saved_data) && is_array($saved_data)) {
         $display_saved = array_map(function($item) {
             return is_array($item) ? ($item['title'] ?? '') : $item;
-        }, array_slice($saved_data, 0, 3));
+        }, $saved_data);
         
         $display_saved = array_filter($display_saved);
         if (!empty($display_saved)) {
-            $initial_history = array_values($display_saved);
-            $top_full = $initial_history[0];
+            // Top item is current live song
+            $top_full = array_shift($display_saved);
             if (strpos($top_full, ' - ') !== false) {
                 list($initial_current_artist, $initial_current_title) = explode(' - ', $top_full, 2);
             } else {
                 $initial_current_title = $top_full;
             }
             $initial_artwork = getITunesArtwork($initial_current_artist, $initial_current_title);
+            
+            // Remaining items form the true past track history
+            if (!empty($display_saved)) {
+                $initial_history = array_values(array_slice($display_saved, 0, 3));
+            }
         }
     }
 }
@@ -90,7 +95,7 @@ if (file_exists($history_file)) {
     <link rel="manifest" href="/site.webmanifest">
     
     <style>
-                .song-artist, .history-artist { font-weight: bold; }
+        .song-artist, .history-artist { font-weight: bold; }
         .song-title, .history-title { font-weight: normal; }
         
         .player-card {
@@ -98,9 +103,9 @@ if (file_exists($history_file)) {
             border: 1px solid #2f63a0;
             border-radius: 8px;
             padding: 20px;
-            margin: 0 auto 20px auto; /* Centers horizontally and adds bottom spacing */
+            margin: 0 auto 20px auto;
             width: 100%;
-            max-width: 500px;         /* Caps width at 500px on desktop */
+            max-width: 500px;
             box-sizing: border-box;
             color: #ffffff;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
@@ -347,7 +352,7 @@ if (file_exists($history_file)) {
             const yearElement = document.getElementById("year");
             if (yearElement) yearElement.textContent = new Date().getFullYear();
 
-            // Initial fetch & interval loop
+            // Initial fetch & poll loop
             fetchNowPlaying();
             setInterval(fetchNowPlaying, 15000);
         });
@@ -365,7 +370,7 @@ if (file_exists($history_file)) {
                         document.getElementById('curr-artist').textContent = artist;
                         document.getElementById('curr-title').textContent = title;
 
-                        // Fetch iTunes artwork whenever track change occurs
+                        // Fetch iTunes artwork whenever track changes
                         const trackKey = artist + " - " + title;
                         if (trackKey !== currentTrackKey) {
                             currentTrackKey = trackKey;
@@ -373,9 +378,18 @@ if (file_exists($history_file)) {
                         }
                     }
                     if (data && data.history && Array.isArray(data.history)) {
+                        let historyItems = [...data.history];
+                        
+                        // Shift off top item if it matches current live song
+                        const liveFull = data.current ? data.current.full : "";
+                        if (historyItems.length > 0 && historyItems[0] === liveFull) {
+                            historyItems.shift();
+                        }
+
                         const historyList = document.getElementById('song-history-list');
                         historyList.innerHTML = '';
-                        data.history.forEach(item => {
+                        
+                        historyItems.slice(0, 3).forEach(item => {
                             let art = "Totally RAD Radio";
                             let tit = item;
                             if (item.includes(' - ')) {
