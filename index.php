@@ -90,7 +90,7 @@ if (file_exists($history_file)) {
     <link rel="manifest" href="/site.webmanifest">
     
     <style>
-        .song-artist, .history-artist { font-weight: bold; }
+                .song-artist, .history-artist { font-weight: bold; }
         .song-title, .history-title { font-weight: normal; }
         
         .player-card {
@@ -98,8 +98,12 @@ if (file_exists($history_file)) {
             border: 1px solid #2f63a0;
             border-radius: 8px;
             padding: 20px;
-            margin-bottom: 20px;
+            margin: 0 auto 20px auto; /* Centers horizontally and adds bottom spacing */
+            width: 100%;
+            max-width: 500px;         /* Caps width at 500px on desktop */
+            box-sizing: border-box;
             color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
 
         .now-playing-wrapper {
@@ -112,8 +116,8 @@ if (file_exists($history_file)) {
         }
 
         .album-art-box {
-            width: 100px;
-            height: 100px;
+            width: 90px;
+            height: 90px;
             flex-shrink: 0;
             border-radius: 6px;
             overflow: hidden;
@@ -143,7 +147,7 @@ if (file_exists($history_file)) {
         }
 
         .current-song-text {
-            font-size: 16px;
+            font-size: 15px;
             line-height: 1.4;
             word-wrap: break-word;
         }
@@ -165,7 +169,7 @@ if (file_exists($history_file)) {
             list-style: none;
             padding: 0;
             margin: 0;
-            font-size: 14px;
+            font-size: 13.5px;
         }
 
         .history-list li {
@@ -209,11 +213,11 @@ if (file_exists($history_file)) {
         <section class="listen" id="main-listen-section">
             <h2>Listen LIVE!</h2>
             
-            <!-- Metadata & Artwork Card -->
+            <!-- Metadata & Artwork Centered Card -->
             <div class="player-card">
                 <div class="now-playing-wrapper">
                     <div class="album-art-box">
-                        <img id="album-art" src="<?php echo htmlspecialchars($initial_artwork); ?>" alt="Album Artwork" width="100" height="100">
+                        <img id="album-art" src="<?php echo htmlspecialchars($initial_artwork); ?>" alt="Album Artwork" width="90" height="90">
                     </div>
                     <div class="track-info">
                         <span class="now-playing-label">Now Playing</span>
