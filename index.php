@@ -66,6 +66,15 @@ function formatTrackHtml($trackString) {
     }
     return '<span class="trr-title">' . htmlspecialchars($trackString) . '</span>';
 }
+
+// Current song: artist and title on two separate lines, no hyphen
+function formatCurrentTrackHtml($trackString) {
+    if (strpos($trackString, ' - ') !== false) {
+        list($artist, $title) = explode(' - ', $trackString, 2);
+        return '<span class="trr-np-artist">' . htmlspecialchars(trim($artist)) . '</span><span class="trr-np-title">' . htmlspecialchars(trim($title)) . '</span>';
+    }
+    return '<span class="trr-np-title">' . htmlspecialchars($trackString) . '</span>';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -125,15 +134,15 @@ function formatTrackHtml($trackString) {
         .trr-live-badge {
             background: #2f63a0;
             color: #fff;
-            font-size: 11px;
+            font-size: 12px;
             font-weight: bold;
-            padding: 3px 8px;
+            padding: 4px 9px;
             border-radius: 4px;
             letter-spacing: 1px;
         }
 
         .trr-station-slogan {
-            font-size: 13px;
+            font-size: 14.5px;
             color: #7094bf;
             font-style: italic;
         }
@@ -164,11 +173,12 @@ function formatTrackHtml($trackString) {
 
         .track-info {
             flex-grow: 1;
+            min-width: 0; /* lets the title shrink/fit instead of stretching the card */
             overflow: hidden;
         }
 
         .now-playing-label {
-            font-size: 10px;
+            font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             color: #7094bf;
@@ -178,9 +188,26 @@ function formatTrackHtml($trackString) {
         }
 
         .current-song-text {
-            font-size: 15px;
+            font-size: 17px;
             line-height: 1.4;
             word-wrap: break-word;
+        }
+
+        /* Current song: two lines (bright bold artist on top, dimmer title below) */
+        .trr-np-artist {
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        .trr-np-title {
+            display: block;
+            font-size: 17px;              /* maximum size; JS shrinks it to fit */
+            font-weight: normal;
+            color: #aab6c5;
+            white-space: nowrap;          /* title stays on one line */
+            overflow: hidden;
+            text-overflow: ellipsis;      /* last-resort fallback at minimum size */
         }
 
         .trr-audio-player {
@@ -196,7 +223,7 @@ function formatTrackHtml($trackString) {
         }
 
         .history-label {
-            font-size: 11px;
+            font-size: 12.5px;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #7094bf;
@@ -211,9 +238,9 @@ function formatTrackHtml($trackString) {
         }
 
         .history-list li {
-            font-size: 13px;
+            font-size: 15px;
             color: #cccccc;
-            padding: 5px 0 !important;
+            padding: 6px 0 !important;
             margin: 0 !important;
             background: transparent !important;
             border: none !important;
@@ -227,9 +254,11 @@ function formatTrackHtml($trackString) {
 
         .trr-artist {
             font-weight: bold;
+            color: #ffffff;               /* bright artist */
         }
         .trr-title {
             font-weight: normal;
+            color: #aab6c5;               /* dimmer title */
         }
     </style>
 
@@ -278,7 +307,7 @@ function formatTrackHtml($trackString) {
                     <div class="track-info">
                         <span class="now-playing-label">Now Playing</span>
                         <div class="current-song-text" id="curr-song-container">
-                            <?php echo formatTrackHtml($initial_current_artist . ' - ' . $initial_current_title); ?>
+                            <?php echo formatCurrentTrackHtml($initial_current_artist . ' - ' . $initial_current_title); ?>
                         </div>
                     </div>
                 </div>
@@ -399,6 +428,8 @@ function formatTrackHtml($trackString) {
             const yearElement = document.getElementById("year");
             if (yearElement) yearElement.textContent = new Date().getFullYear();
 
+            fitTitle(); // fit the server-rendered title right away
+
             // Initial fetch & poll loop
             fetchNowPlaying();
             setInterval(fetchNowPlaying, 15000);
@@ -415,7 +446,9 @@ function formatTrackHtml($trackString) {
                         const artist = data.current.artist || 'Totally RAD Radio';
                         const title = data.current.title || '80s to Early 2000s';
                         
-                        document.getElementById('curr-song-container').innerHTML = formatTrackHtml(trackFull);
+                        // Current song: bold artist on line 1, title on line 2 (no hyphen)
+                        document.getElementById('curr-song-container').innerHTML = formatCurrentTrackHtml(trackFull);
+                        fitTitle();
 
                         const trackKey = artist + " - " + title;
                         if (trackKey !== currentTrackKey) {
@@ -452,6 +485,38 @@ function formatTrackHtml($trackString) {
                 return `<span class="trr-artist"><strong>${escapeHtml(artist)}</strong></span> - <span class="trr-title">${escapeHtml(title)}</span>`;
             }
             return `<span class="trr-title">${escapeHtml(trackString)}</span>`;
+        }
+
+        function formatCurrentTrackHtml(trackString) {
+            if (trackString.includes(' - ')) {
+                const parts = trackString.split(' - ');
+                const artist = parts[0].trim();
+                const title = parts.slice(1).join(' - ').trim();
+                return `<span class="trr-np-artist">${escapeHtml(artist)}</span><span class="trr-np-title">${escapeHtml(title)}</span>`;
+            }
+            return `<span class="trr-np-title">${escapeHtml(trackString)}</span>`;
+        }
+
+        // Shrink the current song title until it fits on one line
+        const TITLE_MIN_PX = 12;
+
+        function fitTitle() {
+            const el = document.querySelector('#curr-song-container .trr-np-title');
+            if (!el) return;
+
+            el.style.fontSize = '';   // reset to the CSS maximum
+            let size = parseFloat(getComputedStyle(el).fontSize);
+
+            while (el.scrollWidth > el.clientWidth && size > TITLE_MIN_PX) {
+                size -= 0.5;
+                el.style.fontSize = size + 'px';
+            }
+        }
+
+        window.addEventListener('resize', fitTitle);
+        window.addEventListener('load', fitTitle);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(fitTitle);
         }
 
         function updateArtwork(artist, title) {
