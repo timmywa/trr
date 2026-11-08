@@ -233,6 +233,12 @@ if (file_exists($history_file)) {
                     </div>
                 </div>
 
+                <!-- Integrated HTML5 Audio Player -->
+                <audio class="trr-audio-player" controls preload="none">
+                    <source src="https://ais-sa2.cdnstream1.com/1977_128.aac" type="audio/aac">
+                    Your browser does not support the audio element.
+                </audio>
+                
                 <div class="history-section">
                     <span class="history-label">Recently Played</span>
                     <ul id="song-history-list" class="history-list">
