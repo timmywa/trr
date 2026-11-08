@@ -5,9 +5,9 @@ header('Cache-Control: no-cache, no-store, must-revalidate');
 $stream_url = 'https://ais-sa2.cdnstream1.com/1977_128.aac';
 $history_file = __DIR__ . '/song_history.json';
 
-$current_full = "Totally RAD Radio! Retro Radio Hits from the 80s to the early 2000s!";
+$current_full = "Totally RAD Radio - 80s to Early 2000s";
 $current_artist = "Totally RAD Radio";
-$current_title = "Retro Radio Hits";
+$current_title = "80s to Early 2000s";
 
 $options = [
     'http' => [
@@ -41,7 +41,9 @@ if ($fp) {
                 $rawMeta = @fread($fp, $length);
                 if (preg_match("/StreamTitle='(.*?)';/i", $rawMeta, $matches)) {
                     $rawTitle = trim($matches[1]);
-                    if (!empty($rawTitle)) {
+                    
+                    // Filter out commercial automation tags like adwtag_
+                    if (!empty($rawTitle) && stripos($rawTitle, 'adwtag_') === false) {
                         $current_full = $rawTitle;
                         if (strpos($rawTitle, ' - ') !== false) {
                             list($art, $tit) = explode(' - ', $rawTitle, 2);
@@ -72,45 +74,37 @@ $titles = array_map(function($item) {
     return is_array($item) ? ($item['title'] ?? '') : $item;
 }, $history);
 
-$is_default = (strpos($current_full, "Three DECADES of Country") !== false);
+$is_default = (strpos($current_full, "80s to Early 2000s") !== false);
 $top_song = !empty($titles) ? $titles[0] : '';
 
-// If we got a real track and it's different from the current top song
+// Update history if a valid song is playing and different from the top entry
 if (!$is_default && $top_song !== $current_full) {
-    // Filter out this song if it already exists lower in the history
     $history = array_values(array_filter($history, function($item) use ($current_full) {
         $t = is_array($item) ? ($item['title'] ?? '') : $item;
         return $t !== $current_full;
     }));
 
-    // Put the new song at the top of the stack
     array_unshift($history, [
         'title' => $current_full,
         'time'  => time()
     ]);
 
-    // Slice to keep exactly 3
+    // Keep 4 items total so shifting off the current song leaves 3 history items
     $history = array_slice($history, 0, 4);
-
-
-    // Save back to disk
     @file_put_contents($history_file, json_encode($history));
 }
 
-// Build final display array
 $display_history = array_map(function($item) {
     return is_array($item) ? ($item['title'] ?? '') : $item;
 }, array_slice($history, 0, 4));
 
-
 $display_history = array_filter($display_history);
 
-// Fallback if empty
 if (empty($display_history)) {
     $display_history = [
-        "George Strait - Troubadour",
-        "Alan Jackson - Chattahoochee",
-        "Tim McGraw - Live Like You Were Dying"
+        "Michael Jackson - Billie Jean",
+        "Prince - 1999",
+        "Madonna - Like a Prayer"
     ];
 }
 
