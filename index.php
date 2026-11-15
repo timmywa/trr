@@ -1,6 +1,8 @@
 <?php
-// Pre-fetch stream data & iTunes artwork on server-load for instant rendering
+// Pre-fetch stream data & iTunes artwork on server-load for instant rendering & caching
 $history_file = __DIR__ . '/song_history.json';
+$cache_file = __DIR__ . '/artwork_cache.json';
+
 $initial_current_artist = "Totally RAD Radio";
 $initial_current_title = "80s to Early 2000s";
 $initial_artwork = "/images/trr-logo.webp"; // Fallback logo
@@ -9,6 +11,8 @@ $initial_history = [
     "Prince - 1999",
     "Madonna - Like a Prayer"
 ];
+
+$initial_current_full = $initial_current_artist . ' - ' . $initial_current_title;
 
 function getITunesArtwork($artist, $title) {
     if (empty($artist) || $artist === "Totally RAD Radio") {
@@ -21,7 +25,7 @@ function getITunesArtwork($artist, $title) {
         'http' => [
             'method' => 'GET',
             'header' => "User-Agent: Mozilla/5.0\r\n",
-            'timeout' => 2
+            'timeout' => 1.5
         ]
     ];
     $context = stream_context_create($opts);
@@ -45,18 +49,32 @@ if (file_exists($history_file)) {
         $display_saved = array_filter($display_saved);
         if (!empty($display_saved)) {
             $top_full = array_shift($display_saved);
+            $initial_current_full = $top_full;
             if (strpos($top_full, ' - ') !== false) {
                 list($initial_current_artist, $initial_current_title) = explode(' - ', $top_full, 2);
             } else {
                 $initial_current_title = $top_full;
             }
-            $initial_artwork = getITunesArtwork($initial_current_artist, $initial_current_title);
             
             if (!empty($display_saved)) {
                 $initial_history = array_values(array_slice($display_saved, 0, 3));
             }
         }
     }
+}
+
+// Check local artwork cache
+$cachedArt = [];
+if (file_exists($cache_file)) {
+    $cachedArt = json_decode(file_get_contents($cache_file), true);
+}
+
+if (isset($cachedArt['track']) && $cachedArt['track'] === $initial_current_full && !empty($cachedArt['url'])) {
+    $initial_artwork = $cachedArt['url'];
+} else {
+    $initial_artwork = getITunesArtwork($initial_current_artist, $initial_current_title);
+    // Save to local cache
+    @file_put_contents($cache_file, json_encode(['track' => $initial_current_full, 'url' => $initial_artwork]), LOCK_EX);
 }
 
 function formatTrackHtml($trackString) {
@@ -83,9 +101,14 @@ function formatCurrentTrackHtml($trackString) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Totally RAD Radio - Listen Live</title>
     
+    <link rel="preconnect" href="https://is1-ssl.mzstatic.com" crossorigin>
+    <link rel="preconnect" href="https://ais-sa2.cdnstream1.com" crossorigin>
+
     <!-- Preload critical assets -->
     <link rel="preload" href="css/main.css?v=1.6" as="style">
     <link rel="preload" href="/images/trr-logo.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="<?php echo htmlspecialchars($initial_artwork); ?>" as="image" crossorigin="anonymous" fetchpriority="high">
+    
     <link rel="stylesheet" href="css/main.css?v=1.6">
 
     <meta name="description" content="Tune into Totally RAD Radio for retro radio hits from the 80s to the early 2000s. Listen live now!">
@@ -302,7 +325,7 @@ function formatCurrentTrackHtml($trackString) {
 
                 <div class="now-playing-wrapper">
                     <div class="album-art-box">
-                        <img id="album-art" src="<?php echo htmlspecialchars($initial_artwork); ?>" alt="Album Artwork" width="90" height="90">
+                        <img id="album-art" src="<?php echo htmlspecialchars($initial_artwork); ?>" alt="Album Artwork" width="90" height="90" crossorigin="anonymous" fetchpriority="high">
                     </div>
                     <div class="track-info">
                         <span class="now-playing-label">Now Playing</span>
@@ -327,14 +350,6 @@ function formatCurrentTrackHtml($trackString) {
                     </ul>
                 </div>
             </div>
-
-            <!-- OnlineRadioBox Player Widget (Commented Out)
-            <div class="radio-widget-wrapper" style="position: relative; isolation: isolate; overflow: hidden; border-radius: var(--border-radius);">
-                <div class="orbP cmpct" id="orb_player_31641a3484918225" vlm="0.8">
-                ...
-                </div>
-            </div>
-            -->
 
             <div class="stream-links">
                 <a href="https://ais-sa2.cdnstream1.com/1977_128.aac" target="_blank" rel="noopener noreferrer">PLAY 128 kb/s AAC (desktop)</a>
@@ -435,7 +450,7 @@ function formatCurrentTrackHtml($trackString) {
             setInterval(fetchNowPlaying, 15000);
         });
 
-        let currentTrackKey = "";
+        let currentTrackKey = <?php echo json_encode($initial_current_full); ?>;
 
         function fetchNowPlaying() {
             fetch('nowplaying.php?t=' + Date.now())
@@ -450,7 +465,7 @@ function formatCurrentTrackHtml($trackString) {
                         document.getElementById('curr-song-container').innerHTML = formatCurrentTrackHtml(trackFull);
                         fitTitle();
 
-                        const trackKey = artist + " - " + title;
+                        const trackKey = trackFull;
                         if (trackKey !== currentTrackKey) {
                             currentTrackKey = trackKey;
                             updateArtwork(artist, title);
