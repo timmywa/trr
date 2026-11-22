@@ -106,10 +106,10 @@ function formatCurrentTrackHtml($trackString) {
 
     <!-- Preload critical assets -->
     <link rel="preload" href="css/main.css?v=1.6" as="style">
-    <link rel="preload" href="/images/trr-logo.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="/images/txr-logo1.webp" as="image" fetchpriority="high">
     <link rel="preload" href="<?php echo htmlspecialchars($initial_artwork); ?>" as="image" crossorigin="anonymous" fetchpriority="high">
     
-    <link rel="stylesheet" href="css/main.css?v=1.6">
+    <link rel="stylesheet" href="css/main.css?v=1.8">
 
     <meta name="description" content="Tune into Totally RAD Radio for retro radio hits from the 80s to the early 2000s. Listen live now!">
     <meta name="robots" content="index, follow">
