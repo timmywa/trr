@@ -7,9 +7,9 @@ $initial_current_artist = "Totally XMAS Radio";
 $initial_current_title = "24/7 Christmas Music";
 $initial_artwork = "/images/txr-logo1.webp"; // Fallback logo
 $initial_history = [
-    "Michael Jackson - Billie Jean",
-    "Prince - 1999",
-    "Madonna - Like a Prayer"
+    "Bing Crosby - White Christmas",
+    "Madonna - Santa Baby",
+    "Wham! - Last Christmas"
 ];
 
 $initial_current_full = $initial_current_artist . ' - ' . $initial_current_title;
