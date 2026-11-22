@@ -23,7 +23,19 @@ $cache_file   = __DIR__ . '/nowplaying_cache.json';
 $lock_file    = __DIR__ . '/nowplaying.lock';
 // ------------------------------------------
 
+$lock = null;
+
+function releaseLock() {
+    global $lock;
+    if (is_resource($lock)) {
+        @flock($lock, LOCK_UN);
+        @fclose($lock);
+        $lock = null;
+    }
+}
+
 function respond($payload) {
+    releaseLock();
     echo json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     exit;
 }
@@ -77,7 +89,7 @@ function fetchStreamTitle($url) {
             $length = ord($lenByte) * 16;
             if ($length > 0) {
                 $raw = readBytes($fp, $length);
-                if (preg_match("/StreamTitle='(.*?)';/s", $raw, $m)) {
+                if (preg_match("/(?:^|;)StreamTitle='(.*?)';/s", $raw, $m)) {
                     $title = trim($m[1]);
                 }
             }
