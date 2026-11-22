@@ -105,7 +105,7 @@ function formatCurrentTrackHtml($trackString) {
     <link rel="preconnect" href="https://ais-sa2.cdnstream1.com" crossorigin>
 
     <!-- Preload critical assets -->
-    <link rel="preload" href="css/main.css?v=1.6" as="style">
+    <link rel="preload" href="css/main.css?v=1.8" as="style">
     <link rel="preload" href="/images/txr-logo1.webp" as="image" fetchpriority="high">
     <link rel="preload" href="<?php echo htmlspecialchars($initial_artwork); ?>" as="image" crossorigin="anonymous" fetchpriority="high">
     
@@ -156,7 +156,7 @@ function formatCurrentTrackHtml($trackString) {
                 <img src="/images/txr-logo1.webp" alt="Totally RAD Radio Logo" fetchpriority="high" loading="eager" width="300" height="300">
             </a>
             <h1>Totally XMAS Radio!</h1>
-            <h2>Great Christmas Music, commerical-free!</h2>
+            <h2>Great Christmas Music, commercial-free!</h2>
         </header>
 
         <section class="listen" id="main-listen-section">
