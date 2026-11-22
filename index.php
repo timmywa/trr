@@ -307,10 +307,10 @@ function formatCurrentTrackHtml($trackString) {
     <main class="container">
         <header class="header">
             <a href="https://totallyradradio.com/" class="logo-link">
-                <img src="/images/trr-logo.webp" alt="Totally RAD Radio Logo" fetchpriority="high" loading="eager" width="300" height="300">
+                <img src="/images/txr-logo1.webp" alt="Totally RAD Radio Logo" fetchpriority="high" loading="eager" width="300" height="300">
             </a>
-            <h1>Totally RAD Radio!</h1>
-            <h2>Listen to retro radio hits from the 80s to the early 2000s!</h2>
+            <h1>Totally XMAS Radio!</h1>
+            <h2>Great Christmas Music, commerical-free!</h2>
         </header>
 
         <section class="listen" id="main-listen-section">
@@ -320,7 +320,7 @@ function formatCurrentTrackHtml($trackString) {
             <div class="player-card">
                 <div class="trr-player-header">
                     <span class="trr-live-badge">LIVE</span>
-                    <span class="trr-station-slogan">Retro Radio Hits</span>
+                    <span class="trr-station-slogan">Great Christmas Music!</span>
                 </div>
 
                 <div class="now-playing-wrapper">
