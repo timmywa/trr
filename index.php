@@ -3,9 +3,9 @@
 $history_file = __DIR__ . '/song_history.json';
 $cache_file = __DIR__ . '/artwork_cache.json';
 
-$initial_current_artist = "Totally RAD Radio";
-$initial_current_title = "80s to Early 2000s";
-$initial_artwork = "/images/trr-logo.webp"; // Fallback logo
+$initial_current_artist = "Totally XMAS Radio";
+$initial_current_title = "24/7 Christmas Music";
+$initial_artwork = "/images/txr-logo1.webp"; // Fallback logo
 $initial_history = [
     "Michael Jackson - Billie Jean",
     "Prince - 1999",
@@ -15,8 +15,8 @@ $initial_history = [
 $initial_current_full = $initial_current_artist . ' - ' . $initial_current_title;
 
 function getITunesArtwork($artist, $title) {
-    if (empty($artist) || $artist === "Totally RAD Radio") {
-        return "/images/trr-logo.webp";
+    if (empty($artist) || $artist === "Totally XMAS Radio") {
+        return "/images/txr-logo1.webp";
     }
     $query = urlencode($artist . ' ' . $title);
     $url = "https://itunes.apple.com/search?term={$query}&entity=song&limit=1";
@@ -36,7 +36,7 @@ function getITunesArtwork($artist, $title) {
             return str_replace('100x100bb', '300x300bb', $data['results'][0]['artworkUrl100']);
         }
     }
-    return "/images/trr-logo.webp";
+    return "/images/txr-logo1.webp";
 }
 
 if (file_exists($history_file)) {
@@ -99,7 +99,7 @@ function formatCurrentTrackHtml($trackString) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Totally RAD Radio - Listen Live</title>
+    <title>Totally XMAS Radio - Listen Live</title>
     
     <link rel="preconnect" href="https://is1-ssl.mzstatic.com" crossorigin>
     <link rel="preconnect" href="https://ais-sa2.cdnstream1.com" crossorigin>
